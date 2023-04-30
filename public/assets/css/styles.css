@@ -1,0 +1,72 @@
+
+.table {
+
+    width:100%;
+   margin : 0 auto;
+   margin-top : 80px;
+  text-align: left;
+
+ 
+  
+  
+
+   
+}
+
+body {
+    
+   
+    background-color: rgba(0, 0, 0, 0.903);
+}
+
+
+
+h1  {
+
+    margin-top: 80px;
+    color: rgb(224, 168, 95);
+}
+
+nav{
+
+    font-style: italic;
+    color:white;
+}
+
+p {
+    color:white;
+
+}
+main.container{
+
+    background-color: rgba(0, 0, 0, 0);
+}
+
+h2 {
+    color:white;
+
+}
+
+section.row
+{
+    background-color: rgba(0, 0, 0, 0);
+}
+
+th {
+
+    color: rgb(224, 168, 95);
+    font-size: x-large;
+    font-family: 'Times New Roman', Times, serif;
+}
+a{
+    padding: 5px;
+    text-decoration: none;
+    list-style-type: none;
+    color: white;
+}
+a:hover {
+    list-style-type:armenian;
+
+    color: rgb(224, 168, 95);
+}
+

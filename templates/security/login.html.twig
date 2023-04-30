@@ -1,0 +1,37 @@
+{% extends 'baseForm.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+{% block body %}
+<div class="form">
+  <form method="post">
+    {% if error %}
+    <div class="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <div class="title">Bienvenue</div>
+    <div class="subtitle">Merci de vous connecter !</div>
+    <div class="input-container ic1">
+      <input id="inputEmail" class="input" name="email" type="email" value="{{ last_username }}" placeholder=" "
+        autocomplete="email" required />
+      <div class="cut cut-short"></div>
+      <label for="inputEmail" class="placeholder">Email</label>
+    </div>
+    <div class="input-container ic2">
+      <input id="inputPassword" class="input" name="password" autocomplete="current-password" required type="password"
+        placeholder=" " />
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+      <div class="cut"></div>
+      <label for="inputPassword" class="placeholder">Mot de passe</label>
+    </div>
+
+    <button type="submit" class="sub">Me connecter</button>
+    <div class="lien">
+      <p>Pas encore de compte ? <a href="{{ path('app_register') }}">M'inscrire</a></p>
+      {# <a href="{{ path('forgotten-password') }}" class="btn btn-secondary mt-3">Mot de passe oublié</a> #}
+    </div>
+  </form>
+</div>
+
+
+
+{% endblock %}

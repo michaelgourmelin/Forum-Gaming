@@ -1,0 +1,100 @@
+
+body {
+    
+    background-color: rgba(0, 0, 0, 0.938);
+}
+h1  {
+
+    margin-top: 80px;
+    color:rgb(224, 168, 95);
+    font-size: 50px;
+}
+
+nav{
+
+    font-style: italic;
+    color:white;
+}
+h2  {
+   color: rgb(224, 168, 95)
+
+}
+.card-body {
+
+    background-color: rgba(0, 0, 0, 0.897);
+}
+.card-title
+{
+    color:white;
+ 
+}
+a{
+    padding: 5px;
+    text-decoration: none;
+    list-style-type: none;
+}
+a:hover {
+    list-style-type:armenian;
+    text-decoration:underline;
+    color:aliceblue
+}
+h3{
+    padding: 10px;
+    font-size: x-large;
+ 
+}
+p{
+
+    color:white;
+    font-size: 40px;
+}
+.col-12
+{
+    padding : 10px;
+  
+}
+.col-4{
+
+    border-color: black;
+}
+label {
+
+    font-size: 30px;
+    color: rgb(224, 168, 95);
+    
+}
+
+.form 
+{
+
+    margin-top: 40px;
+}
+button{
+
+    margin-top: 25px;
+}
+
+.theme
+{
+   text-align: right;
+   margin-right: 10px;
+}
+.theme a
+{
+    font-size: 25px;
+       color: rgb(224, 168, 95);
+       font-family:Georgia, 'Times New Roman', Times, serif
+
+}
+
+
+
+
+
+
+ 
+
+
+
+
+

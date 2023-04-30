@@ -1,0 +1,28 @@
+{% extends 'baseFormRegister.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+<div class="form">
+  <div class="title">Bienvenue</div>
+  <div class="subtitle">Merci de vous enregistrer !</div>
+  {{ form_start(registrationForm) }}
+  <div class="input-container ic1">
+
+    <div class="cut cut-short"></div>
+    {{ form_row(registrationForm.email) }}
+  </div>
+  <div class="input-container ic2">
+    {{ form_row(registrationForm.firstname) }}
+  </div>
+  <div class="input-container ic2">
+    {{ form_row(registrationForm.plainPassword) }}
+  </div>
+  <button type="submit" class="sub">Inscription</button>
+  <div class="lien">
+    <p>Déja un compte ? <a href="{{ path('app_login') }}">Me Connecter</a></p>
+    {{ form_end(registrationForm) }}
+  </div>
+</div>
+{% endblock %}
