@@ -9,7 +9,7 @@
 		<!-- Feuilles de styles -->
 		<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
         {% block stylesheets %}{% endblock %}
-		<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/css/stylessection.css') }}">
 
 		<!-- Fichiers JS -->
 		<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
@@ -19,10 +19,10 @@
 	<body>
         {% include "_partials/_nav.html.twig" %}
         
-		{% include "_partials/_flash.html.twig" %}
+		
 		
 		{% block body %}{% endblock %}
 
-    
+      
 	</body>
 </html>

@@ -85,7 +85,24 @@ button{
        color: rgb(224, 168, 95);
        font-family:Georgia, 'Times New Roman', Times, serif
 
+
+    
 }
+
+footer{
+
+  border-top: 4px ;
+    padding-top: 30px;
+    border-color:  rgb(224, 168, 95); ;
+}
+section.mb-4
+{
+
+    padding-bottom: 30px;
+}
+
+
+
 
 
 
