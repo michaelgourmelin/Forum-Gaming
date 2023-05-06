@@ -7,6 +7,9 @@
   <section class="row">
     <div class="col-12">
       <h1> {{ theme.name }} > </h1>
+      <div class="commentaire">
+      <a href="{{ path('comment_commentaire',{slug: theme.slug}) }}"> Ajouter un commentaire</a>  
+    </div>
     </div>
     {% for comments in comment %}
     <article>

@@ -5,6 +5,7 @@
    margin : 0 auto;
    margin-top : 80px;
   text-align: left;
+  padding:30px;
 
  
   
@@ -70,3 +71,9 @@ a:hover {
     color: rgb(224, 168, 95);
 }
 
+.table td 
+{
+
+    padding: 12px;
+  
+}

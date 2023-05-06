@@ -31,37 +31,38 @@ class CommentController extends AbstractController
         return $this->render('comment/list.html.twig', compact('theme', 'comment'));
     }
 
-    #[Route('/ajoutcom', name: 'commentaire')]
+    #[Route('/ajoutcom/{slug}', name: 'commentaire')]
 
     public function addcom(
         Request $request,
         EntityManagerInterface $em,
+        Theme $theme,
         SluggerInterface $slugger
     ): Response {
 
         $this->denyAccessUnlessGranted('ROLE_USER');
 
-        $theme = new Theme();
-        $slug = $slugger->slug($theme->getName());
-        $theme->setSlug($slug);
+
         $comment = new Comment();
         $comment->setUsers($this->getUser());
+        $comment->setTheme($theme);
         $form = $this->createForm(CommentFormType::class, $comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-          
+            $slug = $slugger->slug($theme->getName());
+            $theme->setSlug($slug);
             $em->persist($comment);
             $em->flush();
             $this->addFlash('success', 'Commentaire ajouté');
 
             return $this->redirectToRoute('index_');
         }
-        return $this->render('comment/addcom.html.twig',[
+        return $this->render('comment/addcom.html.twig', [
 
-            'form' =>$form->createView()
-    
+            'form' => $form->createView()
+
         ]);
     }
 }
