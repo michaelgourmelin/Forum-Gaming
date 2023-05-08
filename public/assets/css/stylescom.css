@@ -4,7 +4,7 @@
 body {
     
    
-    background-color: #13151B;
+    background-color:#15171E;
 }
 
 
@@ -37,7 +37,7 @@ p {
 main.container{
    
  vertical-align: auto;
-    background-color:#13151B;
+    background-color:#15171E;
 }
 
 h2 {
@@ -48,7 +48,7 @@ h2 {
 section
 {
     display: flex;
-    background-color: #13151B;
+    background-color: #15171E;
  
 }
 article

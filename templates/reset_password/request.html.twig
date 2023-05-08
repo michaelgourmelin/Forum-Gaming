@@ -1,0 +1,27 @@
+{% extends 'baseaddtheme.html.twig' %}
+
+{% block title %}Mot de passe oublié ?{% endblock %}
+
+{% block body %}
+    {% for flash_error in app.flashes('reset_password_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+    <main class="container">
+        <section class="row">
+            <div class="col-12">
+    <h1>Mot de passe oublié ?</h1>
+    <div class="forms">
+    {{ form_start(requestForm) }}
+        {{ form_row(requestForm.email) }}
+        <div>
+            <small>
+                Entrez votre e-mail et un lien vous sera envoyer
+            </small>
+        </div>
+        <button class="btn btn-primary btn-lg">Envoi vers e-mail</button>
+    {{ form_end(requestForm) }}
+</div>
+</div>
+</section>
+</main>
+{% endblock %}

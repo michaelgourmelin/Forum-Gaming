@@ -17,7 +17,7 @@
 body {
     
    
-    background-color: rgba(0, 0, 0, 0.903);
+    background-color:#15171E;
 }
 
 
@@ -56,8 +56,10 @@ section.row
 th {
 
     color: rgb(224, 168, 95);
-    font-size: x-large;
+    font-size: 20px;
+   
     font-family: 'Times New Roman', Times, serif;
+    
 }
 a{
     padding: 5px;
@@ -75,5 +77,13 @@ a:hover {
 {
 
     padding: 12px;
+    background-color: rgba(0, 0, 0, 0);
+    
   
 }
+.w-auto td
+{
+
+    color: white;
+}
+
