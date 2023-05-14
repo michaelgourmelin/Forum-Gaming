@@ -11,7 +11,7 @@
   </section>
 </main>
 <div class="container">
-  <table class="table table-dark  table-striped table-hover ">
+  <table class="table  border-secondary ">
     <thead>
       <tr>
         <th>Sujet</th>
@@ -23,8 +23,8 @@
     <tbody>
       <tr>
         <td><a href="{{ path('comment_list', {slug: themes.slug}) }}"> {{ themes.name }}</a></td>
-        <td class="w-auto">{{ themes.users.firstname }}</td>
-        <td class="w-25">{{themes.createdAt|date('Y-m-d H:i:s')}}</td>
+        <td class="w-auto text-white ">{{ themes.users.firstname }}</td>
+        <td class="w-25 text-white">{{themes.createdAt|date('Y-m-d H:i:s')}}</td>
       </tr>
       {% endfor %}
     </tbody>

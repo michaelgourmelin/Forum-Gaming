@@ -1,87 +1,93 @@
-
-  
-
 body {
-    
-   
-    background-color:#15171E;
+
+
+    background-color: #15171E;
 }
 
 
 
-h1  {
-  
+h1 {
+
     margin-top: 80px;
     color: rgb(224, 168, 95);
 }
 
 span {
 
-   
-    font-size:large;
-   
+
+    font-size: large;
+
     color: rgb(224, 168, 95);
 
 }
 
-nav{
+nav {
 
     font-style: italic;
-    color:white;
+    color: white;
 }
 
 p {
-    color:white;
+    color: white;
 
 }
-main.container{
-   
- vertical-align: auto;
-    background-color:#15171E;
+
+main.container {
+
+    vertical-align: auto;
+    background-color: #15171E;
 }
 
 h2 {
-    color:white;
+    color: white;
 
 }
 
-section
-{
+section {
     display: flex;
     background-color: #15171E;
- 
+    border-bottom: 1px solid  grey;
+     
+     
+
 }
-article
-{
- 
-    padding:25px;
-    
+
+article {
+  
+    padding: 30px;
+    border-top: 1px solid  grey;
+   
+  
+
 }
-.commentaire
-{
-   text-align: right;
-   margin-right: 10px;
+
+.commentaire {
+    text-align: right;
+    margin-right: 10px;
 }
-.commentaire a
-{
+
+.commentaire a {
     font-size: 25px;
-       color: rgb(224, 168, 95);
-       font-family:Georgia, 'Times New Roman', Times, serif
-
-
-    
+    color: rgb(224, 168, 95);
+    font-family: Georgia, 'Times New Roman', Times, serif
 }
-a{
+
+a {
     padding: 5px;
     text-decoration: none;
     list-style-type: none;
 }
+
 a:hover {
-    list-style-type:armenian;
-    text-decoration:underline;
-  
+    list-style-type: armenian;
+    text-decoration: underline;
+
 }
 
-
-
-
+article p {
+    margin-top: 1em;
+}
+.col-12
+{
+      padding-bottom: 2em;
+}

@@ -2,6 +2,7 @@
 body {
     
     background-color:#13151B;
+    position: relative;
 }
 h1  {
 
@@ -10,10 +11,14 @@ h1  {
     font-size: 50px;
 }
 
-nav{
-
+.navbar{
+   
+   background-color: transparent;
     font-style: italic;
     color:white;
+    position: relative;
+    z-index: 1;
+    
 }
 h2  {
    color: rgb(224, 168, 95)
@@ -21,22 +26,24 @@ h2  {
 }
 .card-body {
 
-    background-color: rgba(0, 0, 0, 0.897);
+    background-color: rgba(0, 0, 0, 0.823);
+   
 }
 .card-title
 {
-    color:white;
+    color:rgb(224, 168, 95);
  
 }
 a{
     padding: 5px;
     text-decoration: none;
     list-style-type: none;
+    
 }
 a:hover {
     list-style-type:armenian;
     text-decoration:underline;
-    color:aliceblue
+    color:rgb(224, 168, 95);
 }
 h3{
     padding: 10px;
@@ -56,6 +63,7 @@ p{
 .col-4{
 
     border-color: black;
+    padding-bottom: 20px;
 }
 label {
 
@@ -78,6 +86,7 @@ button{
 {
    text-align: right;
    margin-right: 10px;
+   position: relative;
 }
 .theme a
 {
@@ -111,6 +120,24 @@ small
     padding-top: 25px;
     width: 30%;
 }
+.img-fluid
+{
+   
+    height:1350px ; 
+    position: absolute;  
+    top:0px;
+    right: 0px;
+   
+    opacity: 0.5;
+
+}
+footer{
+    position: relative;
+    z-index: 2;
+}
+
+
+
 
 
 

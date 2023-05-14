@@ -55,7 +55,7 @@ class CommentController extends AbstractController
             $theme->setSlug($slug);
             $em->persist($comment);
             $em->flush();
-            $this->addFlash('success', 'Commentaire ajouté');
+            // $this->addFlash('success', 'Commentaire ajouté');
 
             return $this->redirectToRoute('index_');
         }
