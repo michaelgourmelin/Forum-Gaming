@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Categories;
+use App\Repository\ThemeRepository;
 use App\Entity\Comment;
 use App\Entity\Theme;
 use App\Form\CommentFormType;
+use App\Repository\CategoriesRepository;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,6 +23,7 @@ class CommentController extends AbstractController
 {
     #[Route('/{slug}', name: 'list')]
     public function list(
+     
         Theme $theme,
         CommentRepository $commentRepository,
         Request $request
@@ -28,7 +32,7 @@ class CommentController extends AbstractController
 
         $comment = $theme->getComments();
 
-        return $this->render('comment/list.html.twig', compact('theme', 'comment'));
+        return $this->render('comment/list.html.twig', compact('theme', 'comment',));
     }
 
     #[Route('/ajoutcom/{slug}', name: 'commentaire')]
@@ -64,5 +68,7 @@ class CommentController extends AbstractController
             'form' => $form->createView()
 
         ]);
+        
     }
+
 }

@@ -7,6 +7,7 @@ use App\Repository\CategoriesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Boolean;
 
 #[ORM\Entity(repositoryClass: CategoriesRepository::class)]
 class Categories
@@ -31,19 +32,19 @@ class Categories
     #[ORM\OneToMany(mappedBy: 'categories', targetEntity: Theme::class)]
     private Collection $themes;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $category_order = null;
 
     public function __construct()
     {
         $this->categories = new ArrayCollection();
         $this->themes = new ArrayCollection();
     }
+   
 
     public function getId(): ?int
     {
         return $this->id;
     }
+   
 
     public function getName(): ?string
     {
@@ -141,15 +142,4 @@ class Categories
         return $this;
     }
 
-    public function getCategoryOrder(): ?int
-    {
-        return $this->category_order;
-    }
-
-    public function setCategoryOrder(?int $category_order): self
-    {
-        $this->category_order = $category_order;
-
-        return $this;
-    }
 }

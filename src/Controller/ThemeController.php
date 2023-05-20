@@ -42,7 +42,7 @@ class ThemeController extends AbstractController
         $theme->setSlug($slug);
         $em->persist($theme);
         $em->flush();
-        $this->addFlash('success' , 'Theme ajouté');
+        // $this->addFlash('success' , 'Theme ajouté');
 
         return $this->redirectToRoute('index_');
       
