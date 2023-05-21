@@ -6,6 +6,7 @@ use App\Entity\Categories;
 use App\Entity\Comment;
 use App\Entity\Theme;
 use App\Entity\Users;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -35,7 +36,12 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
 
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home',);
+
+    
+       
+           
+          
 
         // yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'homepage');
         //    yield MenuItem::linkToCrud('Categories', 'fa fa-tags', Categories::class);

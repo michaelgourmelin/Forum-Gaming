@@ -3,10 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Categories;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\BooleanFilter;
 
 class CategoriesCrudController extends AbstractCrudController
 {
@@ -19,14 +21,14 @@ class CategoriesCrudController extends AbstractCrudController
     {
         return [
 
-            yield IdField::new('id'),
-            yield  TextField::new('name'),
-            yield TextField::new('slug'),
-            yield  AssociationField::new('parent'),
-
+            IdField::new('id'),
+            TextField::new('name'),
+            TextField::new('slug'),
+            AssociationField::new('parent')->autocomplete()
+            
 
         ];
     }
-   
 
+   
 }

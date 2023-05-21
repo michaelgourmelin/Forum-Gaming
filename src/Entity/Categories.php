@@ -39,6 +39,7 @@ class Categories
         $this->themes = new ArrayCollection();
     }
    
+  
 
     public function getId(): ?int
     {

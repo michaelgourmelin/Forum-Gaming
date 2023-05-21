@@ -24,8 +24,8 @@ class CommentCrudController extends AbstractCrudController
 
             yield IdField::new('id'),
             yield TextField::new('commentaire'),
-            yield  AssociationField::new('theme'),
-            yield  AssociationField::new('users'),
+            yield  AssociationField::new('theme')->autocomplete(),
+            yield  AssociationField::new('users')->autocomplete(),
             yield  DateTimeField::new('created_at'),
 
 
