@@ -20,8 +20,6 @@ class Comment
     #[ORM\Column]
     private int $id ;
 
-
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $commentaire = null;
 

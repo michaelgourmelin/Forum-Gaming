@@ -4,11 +4,12 @@ namespace App\Entity\Trait;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 trait SlugTrait
 {
     #[ORM\Column(type: 'string', length: 255)]
-    private $slug;
 
+    private $slug;
     public function getSlug(): ?string
     {
         return $this->slug;

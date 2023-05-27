@@ -2,9 +2,12 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\ThemeController;
 use App\Entity\Theme;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ThemeCrudController extends AbstractCrudController
 {
@@ -12,5 +15,19 @@ class ThemeCrudController extends AbstractCrudController
     {
         return Theme::class;
     }
-  
+
+
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+
+            yield  IdField::new('id'),
+            yield  AssociationField::new('categories')->autocomplete(),
+            yield  TextField::new('name'),
+            yield  AssociationField::new('users')->autocomplete(),
+            yield  DateTimeField::new('created_at'),
+
+
+        ];
+    }
 }

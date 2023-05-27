@@ -11,6 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 
 #[UniqueEntity(fields: ['email'], message: 'Il existe déja un compte pour cet e-mail')]
@@ -24,6 +27,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank(message:'Merci de renseigner un email')]
     private ?string $email = null;
 
 
@@ -38,6 +42,13 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
 
     #[ORM\Column(type: 'string', length: 100)]
+    #[Assert\NotBlank(message:'Merci de renseigner un pseudo')]
+    #[Assert\Length(
+        min: 2,
+        max: 15,
+        minMessage: 'Votre pseudo doit faire au moins de {{ limit }} caractères',
+        maxMessage: 'Votre pseudo ne peut pas faire plus de {{ limit }} caractères',
+    )]
     private $firstname;
 
 

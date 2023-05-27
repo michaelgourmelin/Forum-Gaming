@@ -46,6 +46,7 @@ class RegistrationFormType extends AbstractType
                 ],
 
                 "label" => 'Pseudo'
+                
               
             ])
             

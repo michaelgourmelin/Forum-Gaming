@@ -24,11 +24,13 @@ class CategoriesController extends AbstractController
         Request $request
     ): Response {
        
-
+     
         $theme = $category->getThemes();
+       
     
 
         return $this->render('categories/list.html.twig', compact('category', 'theme'));
+        
        
     }
    

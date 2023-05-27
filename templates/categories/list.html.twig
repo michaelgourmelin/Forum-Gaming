@@ -6,28 +6,40 @@
 <main class="container">
   <section class="row">
     <div class="col-12">
-      <h1> {{ category.parent.name }} > {{ category.name }} > </h1>    
+      <h1> {{ category.parent.name }} > {{ category.name }} > </h1>
     </div>
   </section>
 </main>
 <div class="container">
-  <table class="table  border-secondary ">
+  <table class="table" data-toggle="table" class="table border-secondary" data-pagination="true">
     <thead>
       <tr>
-        <th>Sujet</th>
-        <th>Pseudo</th>
-        <th>Date</th>
+        <th class="th-sm">Sujet</th>
+        <th class="th-sm">Pseudo</th>
+        <th class="th-sm" data-sortable="true" data-field="Date">Activité</th>
       </tr>
     </thead>
-    {% for themes in theme %}
     <tbody>
+      {% for themes in theme %}
       <tr>
         <td><a href="{{ path('comment_list', {slug: themes.slug}) }}"> {{ themes.name }}</a></td>
         <td class="w-auto text-white ">{{ themes.users.firstname }}</td>
-        <td class="w-25 text-white">{{themes.createdAt|date('Y-m-d H:i:s')}}</td>
-      </tr>
+        {% set diff = date('now').diff(date(themes.createdAt|date('Y-m-d H:i:s') )) %}
+        {% if diff.days == 0 %}  
+        <td id="time" class="w-25 text-warning">{{themes.createdAt|date('H : i')}}</td>
+        {% elseif diff.days <= 7  %} 
+        <td id="time" class="w-25 text-warning">{{themes.createdAt|date('j F ')}}</td>
+        {% else %} 
+        <td id="time" class="w-25 text-warning">{{themes.createdAt|date('j F Y')}}</td>
+      </tr>  
+      {% endif %}  
       {% endfor %}
+   
     </tbody>
   </table>
 </div>
 {% endblock %}
+
+{# 
+ <td class="w-25 text-white"> {{themes.createdAt|date('H:i')}} </td> 
+ {% else %}  #}
