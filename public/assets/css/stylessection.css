@@ -137,6 +137,39 @@ footer{
     z-index: 2;
 }
 
+span {
+
+    font-size: 1.2em;
+}
+div.card-header
+
+{
+    font-size: 1.2em;
+
+}
+.link {
+
+        color: white;
+        font-size: 0.8em;
+}
+
+aside
+{
+
+    margin: 0 auto;
+    margin-bottom:5%;
+
+   
+}
+.container
+
+{
+    margin-top: 5%;
+    width: 100%;
+   
+   
+}
+
 
 
 

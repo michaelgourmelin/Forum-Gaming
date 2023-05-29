@@ -24,15 +24,15 @@
       <tr>
         <td><a href="{{ path('comment_list', {slug: themes.slug}) }}"> {{ themes.name }}</a></td>
         <td class="w-auto text-white ">{{ themes.users.firstname }}</td>
-        {% set diff = date('now').diff(date(themes.createdAt|date('Y-m-d H:i:s') )) %}
+        {# {% set diff = date('now').diff(date(themes.createdAt|date('Y-m-d H:i:s') )) %}
         {% if diff.days == 0 %}  
         <td id="time" class="w-25 text-warning">{{themes.createdAt|date('H : i')}}</td>
         {% elseif diff.days <= 7  %} 
         <td id="time" class="w-25 text-warning">{{themes.createdAt|date('j F ')}}</td>
-        {% else %} 
-        <td id="time" class="w-25 text-warning">{{themes.createdAt|date('j F Y')}}</td>
+        {% else %}  #}
+        <td id="time" class="w-25 text-warning">{{themes.createdAt|date('j F Y H:i:s')}}</td>
       </tr>  
-      {% endif %}  
+      {# {% endif %}   #}
       {% endfor %}
    
     </tbody>
