@@ -2,12 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Categories;
-use App\Repository\ThemeRepository;
+
 use App\Entity\Comment;
 use App\Entity\Theme;
 use App\Form\CommentFormType;
-use App\Repository\CategoriesRepository;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -70,6 +68,5 @@ class CommentController extends AbstractController
         ]);
         
     }
-
 
 }

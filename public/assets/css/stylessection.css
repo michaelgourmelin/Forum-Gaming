@@ -1,7 +1,7 @@
 
 body {
     
-    background-color:#13151B;
+    background-color:#13141A; 
     position: relative;
 }
 h1  {
@@ -26,25 +26,34 @@ h2  {
 }
 .card-body {
 
-    background-color: rgba(0, 0, 0, 0.823);
+    background-color:#1C191C;
+    padding: 10px;
+    font-size: x-large;
+   
+}
+
+.card-body:hover {
+
+    background-color:#2D2C30;
+    
    
 }
 .card-title
 {
-    color:rgb(224, 168, 95);
+    color:white;
  
 }
 a{
     padding: 5px;
     text-decoration: none;
     list-style-type: none;
-   
+   color: white;
     
 }
 a:hover {
     list-style-type:armenian;
     text-decoration:underline;
-    color:rgb(224, 168, 95);
+    color:white;
 }
 h3{
     padding: 10px;

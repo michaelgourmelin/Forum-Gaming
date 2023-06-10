@@ -1,0 +1,20 @@
+{% extends 'base3.html.twig' %}
+
+
+{% block body %}
+<main class="container">
+  <section class="row">
+    <div class="col-12">
+   
+      <div class="commentaire">
+    </div>
+    </div>
+    {% for comments in comment %}
+    <article>
+      <span>{{ comments.users.firstname }} : {{comments.createdAt | date('Y-m-d H:i:s') }}</span>
+      <p>{{ comments.commentaire }}</p>
+    </article>
+    {% endfor %}
+  </section>
+</main>
+{% endblock %}

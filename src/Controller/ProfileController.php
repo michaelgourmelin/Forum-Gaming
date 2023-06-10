@@ -2,13 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Users;
-use App\Repository\UsersRepository;
+use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 #[Route('/profil', name: 'profile_')]
 
@@ -21,8 +26,23 @@ class ProfileController extends AbstractController
     }
 
 
+    #[Route('/comment', name: 'list')]
+    public function userComments(Security $security,CommentRepository $commentRepository): Response
+    {
+
+
+        $user =  $security->getUser(); 
 
     
+        return $this->render('profile/list.html.twig', [
+            'comment' => $commentRepository->findBy(['users' => $user])
+        ]);
+    }
+
+
+
+
+
     #[Route('/modifercom/{slug}', name: 'modifier')]
     public function updateProduct(Request $request, EntityManagerInterface $entityManager, $id)
 {
