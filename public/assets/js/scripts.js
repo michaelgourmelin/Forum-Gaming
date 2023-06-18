@@ -12,3 +12,14 @@
 //     let classe = Array.from(trxb).sort(compare(Array.from(thx).indexOf(th), this.asc = !this.asc));
 //     classe.forEach(tr => tbody.appendChild(tr));
 //   }));
+// document.querySelector(".btn-danger").addEventListener("click",confimation)
+
+// function confimation(event){
+    
+//     event.preventDefault();
+
+
+//     let message = "Êtes-vous sur de vouloir supprimer votre commentaire ?";
+//     console.log(event);
+
+// }

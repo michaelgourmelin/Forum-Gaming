@@ -30,7 +30,7 @@ trait CreatedAtTrait
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
-       
+    
     }
 
 

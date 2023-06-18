@@ -46,18 +46,18 @@ h2 {
 section {
     display: flex;
     background-color: #15171E;
-    border-bottom: 1px solid  grey;
-     
-     
+    border-bottom: 1px solid grey;
+
+
 
 }
 
 article {
-  
+
     padding: 30px;
-    border-top: 1px solid  grey;
-   
-  
+    border-top: 1px solid grey;
+
+
 
 }
 
@@ -87,7 +87,33 @@ a:hover {
 article p {
     margin-top: 1em;
 }
-.col-12
-{
-      padding-bottom: 2em;
+
+.col-12 {
+    padding-bottom: 2em;
+}
+
+.modal-header {
+    background-color: #15171E;
+    color: white;
+}
+
+.modal-body {
+    background-color: #15171E;
+    color: white;
+}
+
+.modal-footer {
+    background-color: #15171E;
+    color: white;
+}
+
+#close {
+    background-color: white;
+}
+
+#exampleModal {
+
+
+    padding-top: 10%;
+
 }

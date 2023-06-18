@@ -1,0 +1,16 @@
+{% extends "baseaddtheme.html.twig" %}
+
+{% block title %} Modifier votre commentaire {% endblock %}
+
+{% block body %}
+<main class="container">
+    <section class="row">
+        <div class="col-12">
+            <h1> Modifier votre commentaire :</h1>
+            <div class="form">
+            {% include "comment/_form.html.twig" %}
+        </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

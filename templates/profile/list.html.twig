@@ -5,14 +5,38 @@
 <main class="container">
   <section class="row">
     <div class="col-12">
-   
+
       <div class="commentaire">
-    </div>
+      </div>
     </div>
     {% for comments in comment %}
     <article>
       <span>{{ comments.users.firstname }} : {{comments.createdAt | date('Y-m-d H:i:s') }}</span>
       <p>{{ comments.commentaire }}</p>
+      <a href="{{ path('profile_modifier', {id: comments.id})}}" class="btn btn-success">Modifier</a>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+       Supprimer
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-7" id="exampleModalLabel">Suppression</h1>
+              <button type="button" id="close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Êtes-vous sur de vouloir supprimer votre commentaire ?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <a href="{{ path('profile_supprimer', {id: comments.id})}}" class="btn btn-danger">Supprimer</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </article>
     {% endfor %}
   </section>
