@@ -30,7 +30,7 @@
         {% elseif diff.days <= 7  %} 
         <td id="time" class="w-25 text-warning">{{themes.createdAt|date('j F ')}}</td>
         {% else %}  #}
-        <td id="time" class="w-25 text-warning">{{themes.createdAt|date('j F Y H:i:s')}}</td>
+        <td id="time" class="w-25 text-warning">{{ themes.createdAt|format_datetime(locale='fr') }}</td>
       </tr>  
       {# {% endif %}   #}
       {% endfor %}

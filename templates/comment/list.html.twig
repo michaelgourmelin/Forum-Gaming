@@ -14,7 +14,7 @@
     </div>
     {% for comments in comment %}
     <article>
-      <span>{{ comments.users.firstname }} : {{comments.createdAt | date('Y-m-d H:i:s') }}</span>
+      <span>{{ comments.users.firstname }} : {{comments.createdAt|format_datetime(locale='fr')}}</span>
       <p>{{ comments.commentaire }}</p>
     </article>
     {% endfor %}

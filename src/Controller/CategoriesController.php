@@ -18,6 +18,15 @@ class CategoriesController extends AbstractController
 {
 
     #[Route('/{slug}', name: 'list')]
+
+    /**
+     * list theme by parent category
+     *
+     * @param Categories $category
+     * @param ThemeRepository $themeRepository
+     * @param Request $request
+     * @return Response
+     */
     public function list(
         Categories $category,
         ThemeRepository $themeRepository,

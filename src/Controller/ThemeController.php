@@ -24,6 +24,15 @@ class ThemeController extends AbstractController
     }
     
     #[Route('/ajout', name: 'ajouter')]
+
+    /**
+     * add a theme
+     *
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @param SluggerInterface $slugger
+     * @return Response
+     */
    public function add(Request $request, EntityManagerInterface $em,
    SluggerInterface $slugger):Response
    {

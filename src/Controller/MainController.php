@@ -10,6 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     #[Route('/', name: 'main')]
+
+    /**
+     * list all category by parent-category
+     *
+     * @param CategoriesRepository $categoriesRepository
+     * @return Response
+     */
     public function index(CategoriesRepository $categoriesRepository): Response
     {
         return $this->render('main/index.html.twig', [

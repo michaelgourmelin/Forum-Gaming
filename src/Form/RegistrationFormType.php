@@ -16,21 +16,28 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegistrationFormType extends AbstractType
 {
+    /**
+     * user registration form
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email',EmailType::class, [
+            ->add('email', EmailType::class, [
                 'attr' => [
                     'class' => 'input',
                     'name' => 'email',
                     'id' => 'inputEmail',
-                    
-                    
+
+
                 ],
-                 
+
                 'label' => 'Email'
             ])
-      
+
             ->add('firstname', TextType::class, [
                 'attr' => [
                     'class' => 'input',
@@ -40,17 +47,17 @@ class RegistrationFormType extends AbstractType
 
                 'label_attr' => [
 
-                   
+
                     'for' => 'inputFirstname',
-                    
+
                 ],
 
                 "label" => 'Pseudo'
-                
-              
+
+
             ])
-            
-                  
+
+
             // ->add('RGPDConsent', CheckboxType::class, [
             //     'mapped' => false,
             //     'constraints' => [
@@ -65,10 +72,10 @@ class RegistrationFormType extends AbstractType
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'attr' => [
-                'autocomplete' => 'new-password',
-                'class' => 'input',
-                
-            ],
+                    'autocomplete' => 'new-password',
+                    'class' => 'input',
+
+                ],
 
                 'constraints' => [
                     new NotBlank([
@@ -81,13 +88,12 @@ class RegistrationFormType extends AbstractType
                         // max length allowed by Symfony for security reasons
                         'max' => 20,
                         'maxMessage' => 'Votre mot de passe ne doit faire plus de{{ limit }} caractères',
-                        
+
                     ]),
                 ],
-              
+
                 'label' => 'Mot de passe'
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

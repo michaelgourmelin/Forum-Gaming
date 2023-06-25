@@ -11,6 +11,14 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class CommentFormType extends AbstractType
 {
+
+    /**
+     * add comment form
+     *
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder

@@ -2,10 +2,7 @@
 
 namespace App\Entity\Trait;
 
-use DateInterval;
-use DateTimeImmutable;
-use DateTimeInterface;
-use Doctrine\DBAL\Types\DateTimeImmutableType;
+
 use Doctrine\ORM\Mapping as ORM;
 
 trait CreatedAtTrait

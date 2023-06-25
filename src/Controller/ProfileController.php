@@ -16,6 +16,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 #[Route('/profil', name: 'profile_')]
 
+/**
+ * index profil
+ */
 class ProfileController extends AbstractController
 {
     #[Route('/', name: 'index')]
@@ -26,6 +29,14 @@ class ProfileController extends AbstractController
 
 
     #[Route('/comment', name: 'list')]
+
+    /**
+     * display logged in user's comments
+     *
+     * @param Security $security
+     * @param CommentRepository $commentRepository
+     * @return Response
+     */
     public function userComments(Security $security, CommentRepository $commentRepository): Response
     {
 
@@ -39,10 +50,16 @@ class ProfileController extends AbstractController
     }
 
 
-
-
-
     #[Route('/modifercom/{id}', name: 'modifier')]
+
+    /**
+     * edit logged in user comments
+     *
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @param Comment $comment
+     * @return void
+     */
     public function updateComments(Request $request, EntityManagerInterface $em, Comment $comment)
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
@@ -65,6 +82,13 @@ class ProfileController extends AbstractController
     }
     #[Route('/supprimercom/{id}', name: 'supprimer')]
 
+    /**
+     * dalete logged in user comments
+     *
+     * @param Comment $comment
+     * @param EntityManagerInterface $em
+     * @return void
+     */
     public function deleteComments(Comment $comment, EntityManagerInterface $em)
 
     {

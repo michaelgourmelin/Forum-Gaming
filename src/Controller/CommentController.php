@@ -20,8 +20,17 @@ class CommentController extends AbstractController
 
 {
     #[Route('/{slug}', name: 'list')]
+
+    /**
+     * list comment by parent theme
+     *
+     * @param Theme $theme
+     * @param CommentRepository $commentRepository
+     * @param Request $request
+     * @return Response
+     */
     public function list(
-     
+
         Theme $theme,
         CommentRepository $commentRepository,
         Request $request
@@ -35,6 +44,15 @@ class CommentController extends AbstractController
 
     #[Route('/ajoutcom/{slug}', name: 'commentaire')]
 
+    /**
+     * add a comment
+     *
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @param Theme $theme
+     * @param SluggerInterface $slugger
+     * @return Response
+     */
     public function addcom(
         Request $request,
         EntityManagerInterface $em,
@@ -66,7 +84,5 @@ class CommentController extends AbstractController
             'form' => $form->createView()
 
         ]);
-        
     }
-
 }
