@@ -36,7 +36,6 @@ class CategoriesController extends AbstractController
      
         $theme = $category->getThemes();
        
-    
 
         return $this->render('categories/list.html.twig', compact('category', 'theme'));
         

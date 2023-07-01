@@ -42,7 +42,7 @@ class ProfileController extends AbstractController
 
 
         $user =  $security->getUser();
-
+        
 
         return $this->render('profile/list.html.twig', [
             'comment' => $commentRepository->findBy(['users' => $user])

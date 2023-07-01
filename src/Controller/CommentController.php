@@ -38,6 +38,7 @@ class CommentController extends AbstractController
 
 
         $comment = $theme->getComments();
+    
 
         return $this->render('comment/list.html.twig', compact('theme', 'comment',));
     }

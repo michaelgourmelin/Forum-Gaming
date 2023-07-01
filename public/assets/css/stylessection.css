@@ -6,7 +6,7 @@ body {
 }
 h1  {
 
-    margin-top: 80px;
+
     color:rgb(224, 168, 95);
     font-size: 50px;
 }
@@ -16,20 +16,23 @@ h1  {
    background-color: transparent;
     font-style: italic;
     color:white;
-    position: relative;
-    z-index: 1;
+    padding-top: 100px;
+
     
 }
 h2  {
-   color: rgb(224, 168, 95)
+   color: rgb(224, 168, 95);
+   text-align: center;
+     margin-top: 5%;
 
 }
 .card-body {
 
     background-color:#1C191C;
-    padding: 10px;
+    padding: 5%;
     font-size: x-large;
     text-align: center;
+  
    
 }
 
@@ -68,10 +71,11 @@ p{
 }
 .col-12
 {
-    padding : 10px;
+    padding : 1em;
+    margin-bottom: 1em;
   
 }
-.col-4{
+.col-md-4{
 
     border-color: black;
     padding-bottom: 20px;
@@ -112,7 +116,7 @@ button{
 footer{
 
   border-top: 4px ;
-    padding-top: 30px;
+   
     border-color:  rgb(224, 168, 95); ;
 }
 section.mb-4
@@ -134,10 +138,11 @@ small
 .img-fluid
 {
    
-    height:1350px ; 
+    height:23% ; 
     position: absolute;  
     top:0px;
-    right: 0px;
+
+  
    
     opacity: 0.5;
 
@@ -174,12 +179,24 @@ aside
 .container
 
 {
-    margin-top: 5%;
+    margin-top: 15%;
     width: 100%;
    
    
 }
+.top-bar
 
+{
+
+ height: 250px;
+}
+
+#index
+
+{
+
+    margin-top: 25%;
+}
 
 
 
