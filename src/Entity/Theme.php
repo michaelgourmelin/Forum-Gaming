@@ -8,7 +8,7 @@ use App\Repository\ThemeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\ORM\Mapping\OrderBy;
 
 #[ORM\Entity(repositoryClass: ThemeRepository::class)]
 class Theme
@@ -35,7 +35,7 @@ class Theme
     #[ORM\JoinColumn(nullable: false)]
     private ?Users $users = null;
 
-    #[ORM\OneToMany(mappedBy: 'theme', targetEntity: Comment::class)]
+    #[ORM\OneToMany(mappedBy: 'theme', targetEntity: Comment::class,)] #[OrderBy(["created_at" => "DESC"])]
     private Collection $comments;
 
 

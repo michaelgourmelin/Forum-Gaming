@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      {% for themes in pagination %}
+      {% for themes in theme %}
       <tr>
         <td><a href="{{ path('comment_list', {slug: themes.slug}) }}"> {{ themes.name }}</a></td>
         <td class="w-auto text-white ">{{ themes.users.firstname }}</td>
@@ -35,9 +35,6 @@
       {% endfor %}
     </tbody>
   </table>
-  <div class="paginate">
-    {{knp_pagination_render(pagination)}}
-  </div>
 </div>
 {% endblock %}
 
