@@ -20,26 +20,28 @@
       </tr>
     </thead>
     <tbody>
-      {% for themes in theme %}
+      {% for themes in pagination %}
       <tr>
         <td><a href="{{ path('comment_list', {slug: themes.slug}) }}"> {{ themes.name }}</a></td>
         <td class="w-auto text-white ">{{ themes.users.firstname }}</td>
         {# {% set diff = date('now').diff(date(themes.createdAt|date('Y-m-d H:i:s') )) %}
-        {% if diff.days == 0 %}  
+        {% if diff.days == 0 %}
         <td id="time" class="w-25 text-warning">{{themes.createdAt|date('H : i')}}</td>
-        {% elseif diff.days <= 7  %} 
-        <td id="time" class="w-25 text-warning">{{themes.createdAt|date('j F ')}}</td>
-        {% else %}  #}
-        <td id="time" class="w-25 text-warning">{{ themes.createdAt|format_datetime(locale='fr') }}</td>
-      </tr>  
-      {# {% endif %}   #}
+        {% elseif diff.days <= 7 %} <td id="time" class="w-25 text-warning">{{themes.createdAt|date('j F ')}}</td>
+          {% else %} #}
+          <td id="time" class="w-25 text-warning">{{ themes.createdAt|format_datetime(locale='fr') }}</td>
+      </tr>
+      {# {% endif %} #}
       {% endfor %}
-   
     </tbody>
   </table>
+  <div class="paginate">
+    {{knp_pagination_render(pagination)}}
+  </div>
 </div>
 {% endblock %}
 
-{# 
- <td class="w-25 text-white"> {{themes.createdAt|date('H:i')}} </td> 
- {% else %}  #}
+
+{#
+<td class="w-25 text-white"> {{themes.createdAt|date('H:i')}} </td>
+{% else %} #}

@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\Categories;
 use App\Repository\ThemeRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,16 +31,23 @@ class CategoriesController extends AbstractController
     public function list(
         Categories $category,
         ThemeRepository $themeRepository,
-        Request $request
-    ): Response {
-       
-     
-        $theme = $category->getThemes();
-       
+        Request $request,
+        PaginatorInterface $paginatorInterface
 
-        return $this->render('categories/list.html.twig', compact('category', 'theme'));
-        
-       
+
+    ): Response {
+
+
+        $theme = $category->getThemes();
+
+        $pagination = $paginatorInterface->paginate(
+
+            $themeRepository->paginationQuery(),
+            $request->query->get('page', 1),
+            20
+        );
+
+
+        return $this->render('categories/list.html.twig', compact('category', 'theme', 'pagination'));
     }
-   
 }

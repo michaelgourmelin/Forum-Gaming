@@ -1,7 +1,7 @@
 
 body {
     
-    background-color:#13141A; 
+    background: linear-gradient( #13141A,rgb(56, 37, 12) ) ; 
     position: relative;
 }
 h1  {
@@ -16,7 +16,9 @@ h1  {
    background-color: transparent;
     font-style: italic;
     color:white;
-    padding-top: 100px;
+    position :relative;
+    z-index: 2;
+   
 
     
 }
@@ -66,7 +68,7 @@ h3{
 }
 p{
 
-    color:white;
+    color:rgb(224, 168, 95);
     font-size: 40px;
 }
 .col-12

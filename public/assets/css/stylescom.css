@@ -117,3 +117,32 @@ article p {
     padding-top: 10%;
 
 }
+.paginate
+
+{
+
+    margin-top:2%;
+    margin-left: 90%;
+    font-size: 1.2em;
+    padding: 1.1em;
+    
+    
+}
+.paginate a
+{
+
+    color: white;
+}
+.paginate a:hover
+{
+
+    color:rgb(224, 168, 95);
+}
+
+.current
+
+{
+
+    color: grey;
+  
+}

@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Entity\Trait\CreatedAtTrait;
-use App\Entity\Trait\SlugTrait;
 use App\Repository\CommentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
