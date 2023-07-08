@@ -8,6 +8,7 @@ use App\Entity\Theme;
 use App\Form\CommentFormType;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,14 +35,18 @@ class CommentController extends AbstractController
         Theme $theme,
         CommentRepository $commentRepository,
         Request $request,
-       
+        PaginatorInterface $paginatorInterface
     ): Response {
 
 
         $comment = $theme->getComments();
-       
+        $pagination = $paginatorInterface->paginate(
+            $commentRepository->paginationQuery($theme->getSlug()),
+            $request->query->getInt('page', 1),
+            25
+        );
 
-        return $this->render('comment/list.html.twig', compact('theme', 'comment', ));
+        return $this->render('comment/list.html.twig', compact('theme', 'pagination'));
     }
 
     #[Route('/ajoutcom/{slug}', name: 'commentaire')]

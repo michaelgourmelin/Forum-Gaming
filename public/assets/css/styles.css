@@ -1,56 +1,55 @@
-
 .table {
 
-    width:100%;
-   margin : 0 auto;
-   margin-top : 80px;
-  text-align: left;
- 
- 
-   
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 80px;
+    text-align: left;
+
+
+
 }
 
 
 .table tbody tr:hover {
-    background-color: #2A2C32; 
+    background-color: #2A2C32;
 }
 
 body {
-    
-   
-    background-color:#15171E;
+
+
+    background-color: #15171E;
 }
 
 
 
-h1  {
+h1 {
 
     margin-top: 80px;
     color: rgb(224, 168, 95);
-}
+    Font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;}
 
-nav{
+nav {
 
     font-style: italic;
-    color:white;
+    color: white;
 }
 
 p {
-    color:white;
+    color: white;
 
 }
-main.container{
+
+main.container {
 
     background-color: rgba(0, 0, 0, 0);
 }
 
 h2 {
-    color:white;
+    color: white;
 
 }
 
-section.row
-{
+section.row {
     background-color: rgba(0, 0, 0, 0);
 }
 
@@ -58,57 +57,68 @@ th {
 
     color: rgb(224, 168, 95);
     font-size: 20px;
-   padding-left: 5px;
-  
-    
+    padding-left: 5px;
+    font-family: cursive,Times New Roman, serif;
+
+
 }
-a{
+
+a {
     padding: 5px;
     text-decoration: none;
     list-style-type: none;
     color: white;
+    font-family: cursive,Times New Roman, serif;
+
 }
+
 a:hover {
-    list-style-type:armenian;
+    list-style-type: armenian;
 
     color: rgb(224, 168, 95);
 }
 
-.table td 
-{
+.table td {
 
     padding: 15px;
     background-color: rgba(0, 0, 0, 0);
-   
-    
+    font-family: cursive;
+
+
 }
-.table th
-{
+
+.table th {
     padding: 15px;
 }
-.w-auto td
-{
+
+.w-auto td {
 
     color: white;
 }
 
-.paginate
+.pagination {
 
-{
+    margin-top: 2%;
+    margin-left: 75%;
 
-    margin-top:2%;
-    margin-left: 90%;
-    font-size: 1.2em;
     padding: 1.1em;
-    
+
+
 }
 
-.current
+.pagination a {
+    font-size: 1.3em;
+    color: white;
+}
 
-{
+.pagination a:hover {
 
+    color: rgb(224, 168, 95);
+}
+
+.current {
+    font-size: 1.4em;
     color: grey;
+    margin-right: 0.3em;
+
 }
-
-
-

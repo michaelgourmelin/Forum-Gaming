@@ -10,25 +10,33 @@ h1 {
 
     margin-top: 80px;
     color: rgb(224, 168, 95);
+    Font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
+
+
 }
 
 span {
 
 
     font-size: large;
-
+    font-family: cursive, Times New Roman, serif;
     color: rgb(224, 168, 95);
 
 }
 
-nav {
+nav a {
 
     font-style: italic;
     color: white;
+    font-family: cursive, Times New Roman, serif;
+
+
+
 }
 
 p {
     color: white;
+    font-family: Georgia, serif;
 
 }
 
@@ -67,9 +75,9 @@ article {
 }
 
 .commentaire a {
-    font-size: 25px;
+    font-size: 2em;
     color: rgb(224, 168, 95);
-    font-family: Georgia, 'Times New Roman', Times, serif
+    Font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
 }
 
 a {
@@ -117,32 +125,30 @@ article p {
     padding-top: 10%;
 
 }
-.paginate
 
-{
+.pagination {
 
-    margin-top:2%;
-    margin-left: 90%;
-    font-size: 1.2em;
+    margin-top: 2%;
+    margin-left: 75%;
+
     padding: 1.1em;
-    
-    
-}
-.paginate a
-{
 
+
+}
+
+.pagination a {
+    font-size: 1.3em;
     color: white;
 }
-.paginate a:hover
-{
 
-    color:rgb(224, 168, 95);
+.pagination a:hover {
+
+    color: rgb(224, 168, 95);
 }
 
-.current
-
-{
-
+.current {
+    font-size: 1.5em;
     color: grey;
-  
+    margin-right: 0.3em;
+
 }

@@ -6,12 +6,12 @@
 <main class="container">
   <section class="row">
     <div class="col-12">
-      <h1> {{ category.parent.name }} > {{ category.name }} > </h1>
+      <h1> {{ category.parent.name }} > {{ category.name }} </h1>
     </div>
   </section>
 </main>
 <div class="container">
-  <table class="table" data-toggle="table" class="table border-secondary" data-pagination="true">
+  <table class="table  border-secondary" data-toggle="table" data-pagination="true">
     <thead>
       <tr>
         <th class="th-sm">Sujet</th>
@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      {% for themes in theme %}
+      {% for themes in pagination %}
       <tr>
         <td><a href="{{ path('comment_list', {slug: themes.slug}) }}"> {{ themes.name }}</a></td>
         <td class="w-auto text-white ">{{ themes.users.firstname }}</td>
@@ -35,8 +35,12 @@
       {% endfor %}
     </tbody>
   </table>
+  <div class="pagination">
+    {{ knp_pagination_render(pagination)}}
+  </div>
 </div>
 {% endblock %}
+
 
 
 {#

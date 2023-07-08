@@ -6,18 +6,21 @@
 <main class="container">
   <section class="row">
     <div class="col-12">
-      <h1> {{ theme.name }} > </h1>
+      <h1> {{ theme.name }} </h1>
       {# <a href="{{ path('categories_list', {slug: category.slug}) }}">gfgf</a> #}
       <div class="commentaire">
       <a href="{{ path('comment_commentaire',{slug: theme.slug}) }}"> Ajouter un commentaire</a>  
     </div>
     </div>
-    {% for comments in comment %}
+    {% for comments in pagination %}
     <article>
       <span>{{ comments.users.firstname }} : {{comments.createdAt|format_datetime(locale='fr')}}</span>
       <p>{{ comments.commentaire }}</p>
     </article>
     {% endfor %}
   </section>
+  <div class="pagination">
+    {{ knp_pagination_render(pagination)}}
+  </div>
 </main>
 {% endblock %}

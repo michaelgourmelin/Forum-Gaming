@@ -38,11 +38,14 @@ class CommentRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-    public function paginationQuery()
+    public function paginationQuery(string $slug)
     {
-        return $this->createQueryBuilder('a')
-
-            ->orderBy('a.created_at', 'DESC')
+        return $this->createQueryBuilder('c')
+            ->leftJoin('c.theme', 't')
+            ->where('t.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->orderBy('c.created_at','ASC')
             ->getQuery();
     }
+
 }

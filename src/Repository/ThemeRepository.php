@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Theme;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Bundle\PaginatorBundle\DependencyInjection\KnpPaginatorExtension;
+use Knp\Component\Pager\Paginator;
 
 /**
  * @extends ServiceEntityRepository<Theme>
@@ -42,11 +44,13 @@ class ThemeRepository extends ServiceEntityRepository
     /**
      * @return Theme[] Returns an array of Theme objects
      */
-    public function paginationQuery()
+    public function paginationQuery(string $slug)
     {
-        return $this->createQueryBuilder('a')
-
-            ->orderBy('a.created_at', 'DESC')
+        return $this->createQueryBuilder('t')
+            ->leftJoin('t.categories', 'c')
+            ->where('c.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->orderBy('t.created_at','DESC')
             ->getQuery();
     }
 

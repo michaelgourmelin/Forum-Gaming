@@ -1,10 +1,10 @@
 <aside class="col-3  p-1 w-50 ">
   <article class="card mb-3 bg-dark">
     <div class="card-header text-warning">
-      Commentaires
+      Utilisateur
     </div>
     <div class="card-body">
-      <p><a class="link" href="{{ path('profile_list') }}">Mes commentaires</a></p>
+      <span class="w-auto text-white ">{{ app.user.email }}</span>
     </div>
   </article>
   <article class="card mb-3 bg-dark">
@@ -17,10 +17,10 @@
   </article>
   <article class="card mb-3 bg-dark">
     <div class="card-header text-warning">
-      Utilisateur
+      Commentaires
     </div>
     <div class="card-body">
-      <span class="w-auto text-white ">{{ app.user.email }}</span>
+      <p><a class="link" href="{{ path('profile_list') }}">Mes commentaires</a></p>
     </div>
   </article>
 </aside>
