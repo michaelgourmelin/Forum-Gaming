@@ -27,16 +27,11 @@ class DashboardController extends AbstractDashboardController
         return $this->redirect($adminUrlGenerator->setController(CategoriesCrudController::class)->generateUrl());
     }
 
-    public function configureDashboard(): Dashboard
-    {
-        return Dashboard::new()
-            ->setTitle('ForumProject');
-    }
 
     public function configureMenuItems(): iterable
     {
 
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home',);
+        yield MenuItem::linkToCrud('Categories', 'fa fa-categories',Categories::class);
 
     
        
@@ -45,7 +40,7 @@ class DashboardController extends AbstractDashboardController
 
         // yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'homepage');
         //    yield MenuItem::linkToCrud('Categories', 'fa fa-tags', Categories::class);
-        yield MenuItem::linkToCrud('Theme', 'fa fa-comment', Theme::class);
+        yield MenuItem::linkToCrud('Theme', 'fa fa-theme', Theme::class);
         yield MenuItem::linkToCrud('Comment', 'fa fa-comment', Comment::class);
         yield MenuItem::linkToCrud('Users', 'fa fa-users', Users::class);
        

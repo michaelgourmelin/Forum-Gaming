@@ -27,7 +27,7 @@ class CommentFormType extends AbstractType
              
             'constraints' => [
             new NotBlank([
-                'message' => 'Merci de saisir un thème',
+                'message' => 'Merci de saisir un commentaire',
 
             ]),
             new Length([

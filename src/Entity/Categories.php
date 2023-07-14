@@ -34,6 +34,9 @@ class Categories
     
     private Collection $themes;
 
+    #[ORM\Column]
+    private ?int $category_order = null;
+
 
     public function __construct()
     {
@@ -141,6 +144,18 @@ class Categories
                 $theme->setCategories(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategoryOrder(): ?int
+    {
+        return $this->category_order;
+    }
+
+    public function setCategoryOrder(int $category_order): self
+    {
+        $this->category_order = $category_order;
 
         return $this;
     }
