@@ -30,8 +30,7 @@ class Categories
     #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
     private Collection $categories;
 
-    #[ORM\OneToMany(mappedBy: 'categories', targetEntity: Theme::class ,)] #[OrderBy(["created_at" => "DESC"])]
-    
+    #[ORM\OneToMany(mappedBy: 'categories', targetEntity: Theme::class, cascade: ["remove"])]
     private Collection $themes;
 
     #[ORM\Column]
@@ -43,14 +42,17 @@ class Categories
         $this->categories = new ArrayCollection();
         $this->themes = new ArrayCollection();
     }
-   
-  
+
+    public function __toString()
+    {
+        return $this->getName() ?? '';
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
-   
+
 
     public function getName(): ?string
     {
@@ -159,5 +161,4 @@ class Categories
 
         return $this;
     }
-
 }
