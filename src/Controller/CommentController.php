@@ -84,7 +84,9 @@ class CommentController extends AbstractController
             $em->flush();
             // $this->addFlash('success', 'Commentaire ajouté');
 
-            return $this->redirectToRoute('index_');
+            return $this->redirectToRoute('comment_list', [
+                'slug' => $theme->getSlug()
+            ]);
         }
         return $this->render('comment/addcom.html.twig', [
 

@@ -10,7 +10,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 
 class CategoriesCrudController extends AbstractCrudController
@@ -57,14 +56,7 @@ class CategoriesCrudController extends AbstractCrudController
         } else {
             yield AssociationField::new('parent');
         }
-     
+
         yield IntegerField::new('category_order')->formatValue(fn ($value, $entity) => (string) $value);
     }
-
-  
-
-
-   
-
- 
 }
