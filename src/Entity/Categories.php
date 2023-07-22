@@ -30,7 +30,7 @@ class Categories
     #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
     private Collection $categories;
 
-    #[ORM\OneToMany(mappedBy: 'categories', targetEntity: Theme::class, cascade: ["remove"])]
+    #[ORM\OneToMany(mappedBy: 'categories', targetEntity: Theme::class, cascade:["remove"])]
     private Collection $themes;
 
     #[ORM\Column]

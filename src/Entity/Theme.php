@@ -35,7 +35,7 @@ class Theme
     #[ORM\JoinColumn(nullable: false)]
     private ?Users $users = null;
 
-    #[ORM\OneToMany(mappedBy: 'theme', targetEntity: Comment::class,)] #[OrderBy(["created_at" => "DESC"])]
+    #[ORM\OneToMany(mappedBy: 'theme', targetEntity: Comment::class,cascade:["remove"])] #[OrderBy(["created_at" => "DESC"])]
     private Collection $comments;
 
 
