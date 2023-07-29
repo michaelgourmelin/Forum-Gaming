@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\Entity\Categories;
 use Doctrine\ORM\EntityManagerInterface;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -25,7 +24,7 @@ class CategoriesCrudController extends AbstractCrudController
     }
 
 
-  
+
     public static function getEntityFqcn(): string
     {
         return Categories::class;
@@ -35,6 +34,7 @@ class CategoriesCrudController extends AbstractCrudController
         yield IdField::new('id')->hideOnForm();
         yield TextField::new('name');
         yield TextField::new('slug');
+        
         if ($pageName === Crud::PAGE_EDIT) {
             $categoryRepository = $this->entityManager->getRepository(Categories::class);
             $categoriesWithoutParent = $categoryRepository->findBy(['parent' => null]);
@@ -70,10 +70,10 @@ class CategoriesCrudController extends AbstractCrudController
                     'choice_label' => 'name',
                     'required' => false,
                 ]);
-        } 
-        
+        }
 
         yield IntegerField::new('category_order')->formatValue(fn ($value, $entity) => (string) $value);
+        
     }
 
     public function configureCrud(Crud $crud): Crud
@@ -98,5 +98,4 @@ class CategoriesCrudController extends AbstractCrudController
         $entityManager->remove($entityInstance);
         $entityManager->flush();
     }
-
 }

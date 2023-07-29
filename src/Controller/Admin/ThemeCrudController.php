@@ -24,7 +24,6 @@ class ThemeCrudController extends AbstractCrudController
             yield  IdField::new('id'),
             yield  AssociationField::new('categories')->autocomplete(),
             yield  TextField::new('name'),
-            yield  AssociationField::new('users')->autocomplete(),
             yield  DateTimeField::new('created_at'),
 
 
