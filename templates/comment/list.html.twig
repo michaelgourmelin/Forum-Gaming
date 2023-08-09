@@ -6,11 +6,11 @@
 <main class="container">
   <section class="row">
     <div class="col-12">
-      <h1> {{ theme.name }} </h1>
-      {# <a href="{{ path('categories_list', {slug: category.slug}) }}">gfgf</a> #}
+      <h1> <a href="{{ path('categories_list', {slug: category.slug}) }}" class="sectiontitle">{{ category.name }}
+        </a> &#187; {{ theme.name }} </h1>
       <div class="commentaire">
-      <a href="{{ path('comment_commentaire',{slug: theme.slug}) }}"> Ajouter un commentaire</a>  
-    </div>
+        <a href="{{ path('comment_commentaire',{slug: theme.slug}) }}"> Ajouter un commentaire</a>
+      </div>
     </div>
     {% for comments in pagination %}
     <article>
@@ -24,4 +24,3 @@
   </div>
 </main>
 {% endblock %}
-

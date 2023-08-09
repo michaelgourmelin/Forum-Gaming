@@ -47,13 +47,17 @@ class ThemeController extends AbstractController
 
     if ($form->isSubmitted() && $form->isValid()) {
       
+        $category = $theme->getCategories();
         $slug = $slugger->slug($theme->getName());
         $theme->setSlug($slug);
         $em->persist($theme);
         $em->flush();
         // $this->addFlash('success' , 'Theme ajouté');
 
-        return $this->redirectToRoute('index_');
+       
+        return $this->redirectToRoute('categories_list', [
+            'slug' => $category->getSlug()
+        ]);
       
 
     }

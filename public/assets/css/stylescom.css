@@ -79,6 +79,11 @@ article {
     color: rgb(224, 168, 95);
     Font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
 }
+h1 a {
+    font-size:1em;
+    color: rgb(224, 168, 95);
+    Font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
+}
 
 a {
     padding: 5px;

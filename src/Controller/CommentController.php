@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-
+use App\Entity\Categories;
 use App\Entity\Comment;
 use App\Entity\Theme;
 use App\Form\CommentFormType;
@@ -31,14 +31,14 @@ class CommentController extends AbstractController
      * @return Response
      */
     public function list(
-
+      
         Theme $theme,
         CommentRepository $commentRepository,
         Request $request,
         PaginatorInterface $paginatorInterface
     ): Response {
 
-
+        $category = $theme->getCategories();
         $comment = $theme->getComments();
         $pagination = $paginatorInterface->paginate(
             $commentRepository->paginationQuery($theme->getSlug()),
@@ -46,7 +46,7 @@ class CommentController extends AbstractController
             25
         );
 
-        return $this->render('comment/list.html.twig', compact('theme', 'pagination'));
+        return $this->render('comment/list.html.twig', compact('category','theme', 'pagination'));
     }
 
     #[Route('/ajoutcom/{slug}', name: 'commentaire')]

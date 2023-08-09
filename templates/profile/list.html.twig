@@ -15,12 +15,12 @@
       <p>{{ comments.commentaire }}</p>
       <a href="{{ path('profile_modifier', {id: comments.id})}}" class="btn btn-success">Modifier</a>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ comments.id }}">
        Supprimer
       </button>
 
       <!-- Modal -->
-      <div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade"  id="exampleModal{{ comments.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
           <div class="modal-content">
             <div class="modal-header">
@@ -28,10 +28,10 @@
               <button type="button" id="close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              Êtes-vous sur de vouloir supprimer votre commentaire ?
+              Êtes-vous sûr de vouloir supprimer votre commentaire ?
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
               <a href="{{ path('profile_supprimer', {id: comments.id})}}" class="btn btn-danger">Supprimer</a>
             </div>
           </div>
