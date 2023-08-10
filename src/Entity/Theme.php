@@ -26,7 +26,7 @@ class Theme
     private ?string $Name = null;
 
 
-    #[ORM\ManyToOne(inversedBy: 'theme')]
+    #[ORM\ManyToOne(inversedBy: 'themes')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Categories $categories = null;
 

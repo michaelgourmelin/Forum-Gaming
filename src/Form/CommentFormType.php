@@ -34,7 +34,7 @@ class CommentFormType extends AbstractType
                 'min' => 5,
                 'minMessage' => 'Votre texte ne peut pas faire moins de {{ limit }} caractères',
                 // max length allowed by Symfony for security reasons
-                'max' => 800,
+                'max' => 620,
                 'maxMessage' => 'Votre texte ne peut pas faire plus de {{ limit }} caractères',
                 
             ])
