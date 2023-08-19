@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Comment;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
@@ -22,25 +23,31 @@ class CommentFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('commentaire', options:[
-        
-             
-            'constraints' => [
-            new NotBlank([
-                'message' => 'Merci de saisir un commentaire',
+            ->add('commentaire', TextareaType::class, [
 
-            ]),
-            new Length([
-                'min' => 5,
-                'minMessage' => 'Votre texte ne peut pas faire moins de {{ limit }} caractères',
-                // max length allowed by Symfony for security reasons
-                'max' => 620,
-                'maxMessage' => 'Votre texte ne peut pas faire plus de {{ limit }} caractères',
-                
-            ])
-        ],
-    ]);
-    
+                'attr' => [
+                    'rows' => 6,
+                    'style' => 'resize:none;',
+                    'wrap' => 'hard',
+                    'maxlength' => 500,
+
+                ],
+
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Merci de saisir un commentaire',
+
+                    ]),
+                    new Length([
+                        'min' => 5,
+                        'minMessage' => 'Votre texte ne peut pas faire moins de {{ limit }} caractères',
+                        // max length allowed by Symfony for security reasons
+                        'max' => 620,
+                        'maxMessage' => 'Votre texte ne peut pas faire plus de {{ limit }} caractères',
+
+                    ])
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

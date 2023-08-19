@@ -213,3 +213,17 @@ aside {
     font-size: 1em;
     Font-family: Baskerville, Baskerville Old Face, Garamond, Times New Roman, serif;
 }
+#verify_email{
+
+    z-index: 3;
+    position: relative;
+}
+
+.btn-close
+
+{
+height: auto;
+
+
+}
+

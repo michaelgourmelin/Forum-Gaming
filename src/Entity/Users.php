@@ -12,12 +12,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
+
 
 
 #[UniqueEntity(fields: ['email'], message: 'Il existe déja un compte pour cet e-mail')]
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
+
 class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     use CreatedAtTrait;
@@ -27,7 +27,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
-    #[Assert\NotBlank(message:'Merci de renseigner un email')]
+    #[Assert\NotBlank(message: 'Merci de renseigner un email')]
     private ?string $email = null;
 
 
@@ -41,8 +41,10 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
 
+
+
     #[ORM\Column(type: 'string', length: 100)]
-    #[Assert\NotBlank(message:'Merci de renseigner un pseudo')]
+    #[Assert\NotBlank(message: 'Merci de renseigner un pseudo')]
     #[Assert\Length(
         min: 2,
         max: 15,
@@ -52,16 +54,14 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private $firstname;
 
 
-    #[ORM\Column(type: 'boolean')]
-    private $isVerified = false;
-
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Theme::class)]
     private Collection $themes;
 
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Comment::class)]
     private Collection $comments;
 
-
+    #[ORM\Column(type: 'boolean')]
+    private $isVerified = false;
 
 
 
@@ -155,11 +155,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Commentaires>
-     */
-
-    public function isVerified(): bool
+        public function getIsVerified(): ?bool
     {
         return $this->isVerified;
     }
@@ -170,6 +166,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
 
     /**
      * @return Collection<int, Theme>
@@ -229,5 +226,10 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
     }
 }

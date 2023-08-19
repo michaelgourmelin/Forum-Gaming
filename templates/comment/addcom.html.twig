@@ -9,7 +9,7 @@
             <h1> Ajouter un commentaire :</h1>
             <div class="form">
                 {{ form_start(form) }}
-                {{ form_row(form.commentaire, { 'attr': {'rows': 6, 'style': 'resize:none;', 'wrap': 'hard', 'maxlength':600} }) }}
+                {{ form_row(form.commentaire) }}
                 <button type="submit" class="btn btn-warning btn-lg text-white">Valider</button>
                 {{ form_end(form) }}
             </div>
