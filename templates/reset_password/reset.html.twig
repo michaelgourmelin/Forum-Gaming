@@ -1,4 +1,4 @@
-{% extends 'baseaddtheme.html.twig' %}
+{% extends 'base_add_theme.html.twig' %}
 
 {% block title %}Mot de passe oublié{% endblock %}
 
@@ -10,7 +10,7 @@
     <div class="forms">
     {{ form_start(resetForm) }}
         {{ form_row(resetForm.plainPassword) }}
-        <button class="btn btn-primary">Reinitialiser votre mot de passe</button>
+        <button class="btn btn-warning text-white">Reinitialiser votre mot de passe</button>
     {{ form_end(resetForm) }}
 </div>
 </div>

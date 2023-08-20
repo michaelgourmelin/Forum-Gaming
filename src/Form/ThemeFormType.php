@@ -4,12 +4,9 @@ namespace App\Form;
 
 use App\Entity\Categories;
 use App\Entity\Theme;
-use App\Entity\Users;
 use App\Repository\CategoriesRepository;
-use App\Repository\UsersRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;

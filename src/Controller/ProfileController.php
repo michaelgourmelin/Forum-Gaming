@@ -131,7 +131,7 @@ class ProfileController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             $this->addFlash('success', 'Un email a était envoyé , veuillez vérifier votre boîte email');
-            return $this->redirectToRoute('main');
+            return $this->redirectToRoute('profile_index');
         }
     }
 }
