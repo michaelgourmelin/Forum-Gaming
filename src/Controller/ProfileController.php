@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+
+use Symfony\Component\Mime\Address;
 use App\Entity\Comment;
+use App\Entity\Users;
 use App\Form\CommentFormType;
 use App\Repository\CommentRepository;
+use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,6 +26,13 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ProfileController extends AbstractController
 {
+
+    private EmailVerifier $emailVerifier;
+    public function __construct(EmailVerifier $emailVerifier)
+    {
+        $this->emailVerifier = $emailVerifier;
+    }
+
     #[Route('/', name: 'index')]
     public function index()
     {
@@ -42,7 +54,7 @@ class ProfileController extends AbstractController
 
 
         $user =  $security->getUser();
-        
+
 
         return $this->render('profile/list.html.twig', [
             'comment' => $commentRepository->findBy(['users' => $user])
@@ -98,5 +110,28 @@ class ProfileController extends AbstractController
         $em->flush();
 
         return $this->redirectToRoute('profile_list');
+    }
+
+    #[Route('/send-email', name: 'send_email')]
+
+    public function sendEmail()
+    {
+        // Récupérer l'utilisateur authentifié
+        $user = $this->getUser();
+
+        // Vérifier si l'utilisateur existe
+        if ($user instanceof Users) {
+            $this->emailVerifier->sendEmailConfirmation(
+                'app_verify_email',
+                $user,
+                (new TemplatedEmail())
+                    ->from(new Address('no-reply@eslforum.net', 'Mail bot'))
+                    ->to($user->getEmail())
+                    ->subject('Please Confirm your Email')
+                    ->htmlTemplate('registration/confirmation_email.html.twig')
+            );
+            $this->addFlash('success', 'Un email a était envoyé , veuillez vérifier votre boîte email');
+            return $this->redirectToRoute('main');
+        }
     }
 }

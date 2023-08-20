@@ -5,6 +5,9 @@
     </div>
     <div class="card-body">
       <span class="w-auto text-white ">{{ app.user.email }}</span>
+      {% if app.user and app.user.isVerified == false %}
+      <p><a class="link text-warning" href="{{ path('profile_send_email') }}">Confirmer mon email</a></p>
+      {% endif %}
     </div>
     
   </article>
