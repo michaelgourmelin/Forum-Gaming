@@ -8,8 +8,13 @@
         <div class="col-12">
             <h1> Modifier votre commentaire :</h1>
             <div class="form">
-            {% include "comment/_form.html.twig" %}
-        </div>
+                <div class="form">
+                    {{ form_start(form) }}
+                    {{ form_row(form.commentaire) }}
+                    <button type="submit" class="btn btn-warning btn-lg text-white">Valider</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
         </div>
     </section>
 </main>
