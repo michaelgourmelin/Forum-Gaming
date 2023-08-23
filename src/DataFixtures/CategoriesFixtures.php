@@ -15,25 +15,24 @@ class CategoriesFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $parent = $this->createCategory('Communautés', null, $manager);
+        $parent = $this->createCategory('Diablo 4', null, $manager);
         
-        $this->createCategory('Discution Générale', $parent, $manager);
-        $this->createCategory('Partage', $parent, $manager);
-        $this->createCategory('Vision de l\avenir du jeu-vidéo', $parent, $manager);
+        $this->createCategory('Le jcj', $parent, $manager);
+        $this->createCategory('Le stuff', $parent, $manager);
+        $this->createCategory('Tournoi', $parent, $manager);
 
-        $parent = $this->createCategory('Esport', null, $manager);
+        $parent = $this->createCategory('World of Warcraft', null, $manager);
 
-        $this->createCategory('Compétition', $parent, $manager);
         $this->createCategory('Discussion Générale', $parent, $manager);
-        $this->createCategory('Le ranked', $parent, $manager);
+        $this->createCategory('Ranked', $parent, $manager);
+        $this->createCategory('Tournament', $parent, $manager);
 
-        $parent = $this->createCategory('Jeux ESL', null, $manager);
+        $parent = $this->createCategory('Counter strike 2', null, $manager);
 
-        $this->createCategory('Valorant', $parent, $manager);
-        $this->createCategory('OW2', $parent, $manager);
-        $this->createCategory('WOW', $parent, $manager);
-        $this->createCategory('CS2', $parent, $manager);
-        $this->createCategory('Diablo 4', $parent, $manager);
+        $this->createCategory('Streaming', $parent, $manager);
+        $this->createCategory('Le skill', $parent, $manager);
+        $this->createCategory('Évènement', $parent, $manager);
+      
                 
                 
         $manager->flush();
