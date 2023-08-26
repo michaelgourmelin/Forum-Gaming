@@ -44,8 +44,8 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 100)]
     #[Assert\NotBlank(message: 'Merci de renseigner un pseudo')]
     #[Assert\Length(
-        min: 2,
-        max: 15,
+        min: 5,
+        max: 25,
         minMessage: 'Votre pseudo doit faire au moins de {{ limit }} caractères',
         maxMessage: 'Votre pseudo ne peut pas faire plus de {{ limit }} caractères',
     )]
