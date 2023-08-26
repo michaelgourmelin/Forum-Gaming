@@ -24,7 +24,7 @@
       <tr>
         <td><a href="{{ path('comment_list', {slug: themes.slug}) }}"> {{ themes.name }}</a></td>
         <td class="w-auto text-white ">{{ themes.users.firstname }}</td>
-        <td id="time" class="w-25 text-warning">il y a {{ themes.getTimeSinceCreation() }}</td>
+        <td id="time" class="w-25 text-warning">{{ themes.getTimeSinceCreation() }}</td>
       </tr>
       {% endfor %}
     </tbody>

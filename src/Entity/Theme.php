@@ -22,8 +22,8 @@ class Theme
     private ?int $id = null;
 
 
-    #[ORM\Column(length: 70)]
-    private ?string $Name = null;
+    #[ORM\Column(type: 'string',length: 70)]
+    private ?string $name = null;
 
 
     #[ORM\ManyToOne(inversedBy: 'themes')]
@@ -57,12 +57,12 @@ class Theme
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->name;
     }
 
     public function setName(string $Name): self
     {
-        $this->Name = $Name;
+        $this->name = $Name;
 
         return $this;
     }

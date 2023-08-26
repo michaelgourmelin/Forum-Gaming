@@ -35,6 +35,8 @@ trait CreatedAtTrait
             return $interval->format('%a jours');
         } elseif ($interval->h > 0) {
             return $interval->format('%h heures');
+        } elseif ($interval->i == 0) {
+            return $interval->format('à l\'instant');
         } else {
             return $interval->format('%i minutes');
         }

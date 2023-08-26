@@ -41,8 +41,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
 
-
-
     #[ORM\Column(type: 'string', length: 100)]
     #[Assert\NotBlank(message: 'Merci de renseigner un pseudo')]
     #[Assert\Length(
