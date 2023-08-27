@@ -9,8 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
+
 
 class ThemeFormType extends AbstractType
 {
@@ -39,23 +38,7 @@ class ThemeFormType extends AbstractType
                     'for' => 'labelo',
 
                 ],
-                
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Merci de saisir un thème',
-
-                    ]),
-                    new Length([
-                        'min' => 10,
-                        'minMessage' => 'Votre texte ne peut pas faire moins de {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 50,
-                        'maxMessage' => 'Votre texte ne peut pas faire plus de {{ limit }} caractères',
-                        
-                    ]),
-                ],
-              
-
+            
                 'label' => 'Sujet'
             ])
             ->add('categories', EntityType::class, [

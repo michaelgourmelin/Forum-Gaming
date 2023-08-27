@@ -7,8 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
+
 
 class CommentFormType extends AbstractType
 {
@@ -31,21 +30,6 @@ class CommentFormType extends AbstractType
                     'wrap' => 'hard',
                     'maxlength' => 500,
 
-                ],
-
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Merci de saisir un commentaire',
-
-                    ]),
-                    new Length([
-                        'min' => 5,
-                        'minMessage' => 'Votre texte ne peut pas faire moins de {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 620,
-                        'maxMessage' => 'Votre texte ne peut pas faire plus de {{ limit }} caractères',
-
-                    ])
                 ],
             ]);
     }

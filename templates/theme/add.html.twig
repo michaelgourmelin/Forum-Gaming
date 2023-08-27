@@ -8,8 +8,12 @@
         <div class="col-12">
             <h1> Ajouter un theme :</h1>
             <div class="form">
-            {% include "theme/_form.html.twig" %}
-        </div>
+                {{ form_start(form) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.categories) }}
+                <button type="submit" class="btn btn-warning btn-lg text-white">Valider</button>
+                {{ form_end(form) }}
+            </div>
         </div>
     </section>
 </main>

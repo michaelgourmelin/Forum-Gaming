@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OrderBy;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ThemeRepository::class)]
 class Theme
@@ -22,7 +23,14 @@ class Theme
     private ?int $id = null;
 
 
-    #[ORM\Column(type: 'string',length: 70)]
+    #[ORM\Column(type: 'text', length: 70)]
+    #[Assert\NotBlank(message: 'Merci de renseigner un thème')]
+    #[Assert\Length(
+        min: 5,
+        max: 25,
+        minMessage: 'Votre thème doit faire au moins {{ limit }} caractères',
+        maxMessage: 'Votre thème ne peut pas faire plus de {{ limit }} caractères',
+    )]
     private ?string $name = null;
 
 
@@ -60,9 +68,9 @@ class Theme
         return $this->name;
     }
 
-    public function setName(string $Name): self
+    public function setName(string $name): self
     {
-        $this->name = $Name;
+        $this->name = $name;
 
         return $this;
     }
