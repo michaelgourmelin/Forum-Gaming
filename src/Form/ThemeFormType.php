@@ -27,6 +27,8 @@ class ThemeFormType extends AbstractType
         $builder
             ->add('name', options: [
 
+                'empty_data' => '',
+
                 'attr' => [
 
                     'id' => 'labelo'

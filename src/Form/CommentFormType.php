@@ -24,6 +24,8 @@ class CommentFormType extends AbstractType
         $builder
             ->add('commentaire', TextareaType::class, [
 
+                'empty_data' => '',
+                
                 'attr' => [
                     'rows' => 6,
                     'style' => 'resize:none;',

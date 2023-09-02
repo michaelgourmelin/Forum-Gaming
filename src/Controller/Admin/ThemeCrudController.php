@@ -44,13 +44,13 @@ class ThemeCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityPermission('ROLE_ADMIN'); // Adjust the permission as needed
+            ->setEntityPermission('ROLE_MANAGER_ADMIN'); // Adjust the permission as needed
     }
 
     public function deleteEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
         // Check if the user has the required ROLE_ADMIN role
-        if (!$this->isGranted('ROLE_ADMIN')) {
+        if (!$this->isGranted('ROLE_MANAGER_ADMIN')) {
             throw new AccessDeniedException();
         }
 

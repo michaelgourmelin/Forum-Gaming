@@ -66,7 +66,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
-        //$this->theme = new ArrayCollection();
         $this->themes = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
@@ -105,7 +104,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+     
 
         return array_unique($roles);
     }
