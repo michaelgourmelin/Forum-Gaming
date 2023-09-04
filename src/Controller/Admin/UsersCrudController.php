@@ -36,7 +36,7 @@ class UsersCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
 
-        
+
         $passwordField = TextField::new('Password')
             ->setFormType(\Symfony\Component\Form\Extension\Core\Type\PasswordType::class)
             ->setRequired($pageName === Crud::PAGE_NEW)

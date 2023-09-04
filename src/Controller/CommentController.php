@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\Categories;
 use App\Entity\Comment;
 use App\Entity\Theme;
+use App\Entity\Users;
 use App\Form\CommentFormType;
 use App\Repository\CommentRepository;
+use App\Service\VisitCounter;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -35,9 +37,13 @@ class CommentController extends AbstractController
         Theme $theme,
         CommentRepository $commentRepository,
         Request $request,
-        PaginatorInterface $paginatorInterface
+        PaginatorInterface $paginatorInterface,
+        VisitCounter $visitCounter,
+       
     ): Response {
 
+        
+        $visitCounter->increment();
         $category = $theme->getCategories();
         $comment = $theme->getComments();
         $pagination = $paginatorInterface->paginate(

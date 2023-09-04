@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\Categories;
 use App\Repository\ThemeRepository;
+use App\Service\VisitCounter;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,22 +33,27 @@ class CategoriesController extends AbstractController
         Categories $category,
         ThemeRepository $themeRepository,
         Request $request,
-        PaginatorInterface $paginatorInterface
-     
+        PaginatorInterface $paginatorInterface,
+        VisitCounter $visitCounter
+
 
 
     ): Response {
 
+        // Incrémentez le compteur de visites lorsque quelqu'un visite la page d'accueil
+      
 
+        // Obtenez le total des visites
+        $totalVisits = $visitCounter->getCount();
         $theme = $category->getThemes();
-
+     
         $pagination = $paginatorInterface->paginate(
             $themeRepository->paginationQuery($category->getSlug()),
             $request->query->getInt('page', 1),
             20
         );
-    
 
-        return $this->render('categories/list.html.twig', compact('category','pagination'));
+
+        return $this->render('categories/list.html.twig', compact('category', 'pagination','totalVisits'));
     }
 }

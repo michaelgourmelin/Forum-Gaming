@@ -11,19 +11,21 @@
   </section>
 </main>
 <div class="container">
-  <table class="table  border-secondary" data-toggle="table" data-pagination="true">
+  <table class="table border-secondary" data-toggle="table" data-pagination="true">
     <thead>
       <tr>
         <th class="th-sm">Sujet</th>
         <th class="th-sm">Pseudo</th>
+        <th class="th-sm">Vues</th>
         <th class="th-sm" data-sortable="true" data-field="Date">Activité</th>
       </tr>
     </thead>
     <tbody>
       {% for themes in pagination %}
       <tr>
-        <td><a href="{{ path('comment_list', {slug: themes.slug}) }}"> {{ themes.name }}</a></td>
-        <td class="w-auto text-white ">{{ themes.users.firstname }}</td>
+        <td class =""><a href="{{ path('comment_list', {slug: themes.slug}) }}"> {{ themes.name }}</a></td>
+        <td class="w-auto text-white p-3 ">{{ themes.users.firstname }}</td>
+        <td class=" text-white p-3">{{ totalVisits }}</td>
         <td id="time" class="w-25 text-warning">{{ themes.getTimeSinceCreation() }}</td>
       </tr>
       {% endfor %}
