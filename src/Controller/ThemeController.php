@@ -22,7 +22,7 @@ class ThemeController extends AbstractController
     {
         return $this->render('main/index.html.twig');
     }
-    
+
     #[Route('/ajout', name: 'ajouter')]
 
     /**
@@ -33,40 +33,39 @@ class ThemeController extends AbstractController
      * @param SluggerInterface $slugger
      * @return Response
      */
-   public function add(Request $request, EntityManagerInterface $em,
-   SluggerInterface $slugger):Response
-   {
-    
-    $this->denyAccessUnlessGranted('ROLE_USER');
+    public function add(
+        Request $request,
+        EntityManagerInterface $em,
+        SluggerInterface $slugger
+    ): Response {
 
-    $theme = new Theme();
-    $theme->setUsers($this->getUser());
-    $form =$this->createForm(ThemeFormType::class, $theme);
+        $this->denyAccessUnlessGranted('ROLE_USER');
 
-    $form->handleRequest($request);
+        $theme = new Theme();
+        $theme->setUsers($this->getUser());
+        $form = $this->createForm(ThemeFormType::class, $theme);
 
-    if ($form->isSubmitted() && $form->isValid()) {
-      
-        $category = $theme->getCategories();
-        $slug = $slugger->slug($theme->getName());
-        $theme->setSlug($slug);
-        $em->persist($theme);
-        $em->flush();
-        // $this->addFlash('success' , 'Theme ajouté');
+        $form->handleRequest($request);
 
-       
-        return $this->redirectToRoute('categories_list', [
-            'slug' => $category->getSlug()
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $category = $theme->getCategories();
+            $slug = $slugger->slug($theme->getName());
+            $theme->setSlug($slug);
+            $em->persist($theme);
+            $em->flush();
+            // $this->addFlash('success' , 'Theme ajouté');
+
+
+            return $this->redirectToRoute('categories_list', [
+                'slug' => $category->getSlug(), 'id' => $category->getId(),
+            ]);
+        }
+
+        return $this->render('theme/add.html.twig', [
+
+            'form' => $form->createView()
+
         ]);
-      
-
     }
-
-    return $this->render('theme/add.html.twig',[
-
-        'form' =>$form->createView()
-
-    ]);
-   }
- 
-} 
+}

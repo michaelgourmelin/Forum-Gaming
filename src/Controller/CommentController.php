@@ -2,16 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\Categories;
+
 use App\Entity\Comment;
 use App\Entity\Theme;
-use App\Entity\Users;
 use App\Form\CommentFormType;
 use App\Repository\CommentRepository;
 use App\Service\VisitCounter;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,7 +22,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class CommentController extends AbstractController
 
 {
-    #[Route('/{slug}', name: 'list')]
+    #[Route('/{slug}/{id}', name: 'list')]
 
     /**
      * list comment by parent theme
@@ -33,16 +33,25 @@ class CommentController extends AbstractController
      * @return Response
      */
     public function list(
-      
+
         Theme $theme,
         CommentRepository $commentRepository,
         Request $request,
         PaginatorInterface $paginatorInterface,
         VisitCounter $visitCounter,
-       
+
     ): Response {
 
-        
+        $slug = $theme->getSlug();
+        $requestedSlug = $request->attributes->get('slug');
+        if ($requestedSlug !== $slug) {
+            return new RedirectResponse(
+                $this->generateUrl('comment_list', ['slug' => $theme->getSlug(), 'id' => $theme->getId()]),
+                RedirectResponse::HTTP_MOVED_PERMANENTLY
+            );
+        }
+
+
         $visitCounter->increment();
         $category = $theme->getCategories();
         $comment = $theme->getComments();
@@ -52,10 +61,10 @@ class CommentController extends AbstractController
             25
         );
 
-        return $this->render('comment/list.html.twig', compact('category','theme', 'pagination'));
+        return $this->render('comment/list.html.twig', compact('category', 'theme', 'pagination'));
     }
 
-    #[Route('/ajoutcom/{slug}', name: 'commentaire')]
+    #[Route('/addcom/{slug}/{id}', name: 'commentaire')]
 
     /**
      * add a comment
@@ -91,7 +100,8 @@ class CommentController extends AbstractController
             // $this->addFlash('success', 'Commentaire ajouté');
 
             return $this->redirectToRoute('comment_list', [
-                'slug' => $theme->getSlug()
+                'slug' => $theme->getSlug(),
+                'id' => $theme->getId()
             ]);
         }
         return $this->render('comment/addcom.html.twig', [

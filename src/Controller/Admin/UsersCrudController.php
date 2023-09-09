@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Users;
+use App\Repository\UsersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -21,11 +22,13 @@ class UsersCrudController extends AbstractCrudController
 {
     private $passwordHasher;
     private $security;
+    // private $usersRepository;
 
-    public function __construct(UserPasswordHasherInterface $passwordHasher, SecurityBundleSecurity $security)
+    public function __construct(UserPasswordHasherInterface $passwordHasher, SecurityBundleSecurity $security,UsersRepository $usersRepository)
     {
         $this->passwordHasher = $passwordHasher;
         $this->security = $security;
+        // $this->usersRepository = $usersRepository;
     }
 
     public static function getEntityFqcn(): string
