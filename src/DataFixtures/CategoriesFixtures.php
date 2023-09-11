@@ -52,3 +52,4 @@ class CategoriesFixtures extends Fixture
 
         return $category;
     }
+}
