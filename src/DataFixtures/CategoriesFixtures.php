@@ -44,6 +44,7 @@ class CategoriesFixtures extends Fixture
         $category->setName($name);
         $category->setSlug($this->slugger->slug($category->getName())->lower());
         $category->setParent($parent);
+        $category->setCategoryOrder(rand(1, 11));
         $manager->persist($category);
 
         $this->addReference('cat-'.$this->counter, $category);
@@ -51,10 +52,3 @@ class CategoriesFixtures extends Fixture
 
         return $category;
     }
-    // public function getDependencies(): array
-    // {
-    //     return [
-    //         UsersFixtures::class
-    //     ];  
-    // }
-}
