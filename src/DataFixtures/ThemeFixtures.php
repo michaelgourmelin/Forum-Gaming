@@ -19,22 +19,20 @@ class ThemeFixtures extends Fixture implements DependentFixtureInterface
         //use the factory to create a Faker\Generator instance
         $faker = Faker\Factory::create('fr_FR');
 
-        for ($prod = 1; $prod <= 30; $prod++) {
+        for ($prod = 1; $prod <= 150; $prod++) {
             $theme = new Theme();
             $theme->setName($faker->text(15));
             $theme->setSlug($this->slugger->slug($theme->getName())->lower());
-            $user = $this->getReference('user-'. rand(1,7));
+            $user = $this->getReference('user-'. rand(1,60));
             $theme->setUsers($user);
            
-           
-
             //On va chercher une référence de catégorie
-            $users = $this->getReference('cat-' . rand(1, 11));
-            $theme->setCategories($users);
+            $categories = $this->getReference('cat-' . rand(1, 11));
+            $theme->setCategories($categories);
 
           
 
-            $this->setReference('prod-' . $prod, $theme);
+            $this->addReference('theme-' . $prod, $theme);
             $manager->persist($theme);
         }
 
