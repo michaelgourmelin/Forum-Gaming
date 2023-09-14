@@ -41,6 +41,18 @@ class UsersFixtures extends Fixture
         $manager->persist($managerAdmin);
 
 
+        $user = new Users();
+        $user->setEmail('user@user.com'); 
+        $user->setFirstname('user');
+        $user->setPassword(
+            $this->passwordEncoder->hashPassword($user, 'user')
+        );
+        $user->setRoles(['ROLE_USER']);
+
+        $manager->persist($user);
+
+
+
 
         $faker = Faker\Factory::create('fr_FR');
 

@@ -13,7 +13,7 @@
     <article>
       <span>{{ comments.users.firstname }} : {{comments.createdAt | date('Y-m-d H:i:s') }}</span>
       <p>{{ comments.commentaire }}</p>
-      <a href="{{ path('profile_modifier', {id: comments.id})}}" class="btn btn-success">Modifier</a>
+      <a href="{{ path('profile_update', {id: comments.id})}}" class="btn btn-success">Modifier</a>
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ comments.id }}">
        Supprimer
@@ -32,7 +32,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-              <a href="{{ path('profile_supprimer', {id: comments.id})}}" class="btn btn-danger">Supprimer</a>
+              <a href="{{ path('profile_delete', {id: comments.id})}}" class="btn btn-danger">Supprimer</a>
             </div>
           </div>
         </div>

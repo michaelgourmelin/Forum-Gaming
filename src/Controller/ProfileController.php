@@ -33,7 +33,7 @@ class ProfileController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
 
-    #[Route('/', name: 'index')]
+    #[Route( name: 'index')]
     public function index()
     {
         return $this->render('profile/index.html.twig');
@@ -62,7 +62,7 @@ class ProfileController extends AbstractController
     }
 
 
-    #[Route('/modifercom/{id}', name: 'modifier')]
+    #[Route('/update/{id}', name: 'update')]
 
     /**
      * edit logged in user comments
@@ -92,7 +92,7 @@ class ProfileController extends AbstractController
 
         ]);
     }
-    #[Route('/supprimercom/{id}', name: 'supprimer')]
+    #[Route('/delete/{id}', name: 'delete')]
 
     /**
      * dalete logged in user comments

@@ -44,9 +44,7 @@ class ThemeController extends AbstractController
         $theme = new Theme();
         $theme->setUsers($this->getUser());
         $form = $this->createForm(ThemeFormType::class, $theme);
-
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
 
             $category = $theme->getCategories();
