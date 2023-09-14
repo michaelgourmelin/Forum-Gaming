@@ -11,7 +11,7 @@ class AnonymousAccessTest extends WebTestCase
      * 
      * @dataProvider getUrls
      */
-    public function testPageGetIsRedirect($url)
+    public function testPagePostIsForbidden($url)
     {
         $client = self::createClient();
         $client->request('GET', $url);
