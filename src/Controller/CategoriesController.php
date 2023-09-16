@@ -4,7 +4,10 @@ namespace App\Controller;
 
 
 use App\Entity\Categories;
+use App\Entity\Theme;
+use App\Entity\Visits;
 use App\Repository\ThemeRepository;
+use App\Repository\VisitsRepository;
 use App\Service\VisitCounter;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,7 +39,11 @@ class CategoriesController extends AbstractController
         Request $request,
         PaginatorInterface $paginatorInterface,
         VisitCounter $visitCounter,
-      
+
+
+
+
+
 
     ): Response {
 
@@ -53,8 +60,13 @@ class CategoriesController extends AbstractController
         }
 
         // Obtenez le total des visites
+
         $totalVisits = $visitCounter->getCount();
+
+
         $theme = $category->getThemes();
+
+      
 
         $pagination = $paginatorInterface->paginate(
             $themeRepository->paginationQuery($category->getSlug()),

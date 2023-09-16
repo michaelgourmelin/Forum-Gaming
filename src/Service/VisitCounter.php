@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Theme;
 use App\Entity\Visits;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -17,33 +18,31 @@ class VisitCounter
         $this->requestStack = $requestStack;
     }
 
-    public function increment()
+    public function increment(Theme $theme)
     {
-        $request = $this->requestStack->getCurrentRequest();
-        $ipaddress = $request->getClientIp();
-       
-        // Vérifiez si l'adresse IP existe déjà dans la base de données
-        $visit = $this->entityManager->getRepository(Visits::class)->findOneBy(['ipaddress' => $ipaddress]);
-       
-        if (!$visit) {
-            // Si l'adresse IP n'existe pas, créez une nouvelle visite
-            $visit = new Visits();
-            $visit->setIpAddress($ipaddress);
-           
+
+
+        $visits = $theme->getVisits()->first();
+
+
+        if (!$visits) {
+
+            $request = $this->requestStack->getCurrentRequest();
+            $ipaddress = $request->getClientIp();
+            $visits = new Visits();
+            $visits->setIpAddress($ipaddress);
+            $theme->addVisit($visits);
+            // Increment the visit count for the theme
+            $visits->setCount($visits->getCount() + 1);
+            $this->entityManager->persist($visits);
         }
 
-        // Incrémentation du compteur
-        $count = $visit->getCount() + 1;
-        $visit->setCount($count);
 
-        // Enregistrez la visite dans la base de données
-        $this->entityManager->persist($visit);
+        $this->entityManager->persist($visits);
         $this->entityManager->flush();
     }
-
     public function getCount()
     {
-        // Calculez le nombre total de visites
         return $this->entityManager->getRepository(Visits::class)->sumVisitsCount();
     }
 }

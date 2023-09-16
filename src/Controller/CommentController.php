@@ -52,7 +52,7 @@ class CommentController extends AbstractController
         }
 
 
-        $visitCounter->increment();
+        $visitCounter->increment($theme);
         $category = $theme->getCategories();
         $comment = $theme->getComments();
         $pagination = $paginatorInterface->paginate(

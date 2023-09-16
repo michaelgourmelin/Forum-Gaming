@@ -10,6 +10,7 @@ trait SlugTrait
     #[ORM\Column(type: 'string', length: 255)]
 
     private $slug;
+
     public function getSlug(): ?string
     {
         return $this->slug;

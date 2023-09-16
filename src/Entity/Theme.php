@@ -47,6 +47,9 @@ class Theme
     #[ORM\OneToMany(mappedBy: 'theme', targetEntity: Comment::class,cascade:["remove"])] #[OrderBy(["created_at" => "DESC"])]
     private Collection $comments;
 
+    #[ORM\ManyToMany(targetEntity: Visits::class, mappedBy: 'theme')]
+    private Collection $visits;
+
 
 
     public function __construct()
@@ -54,6 +57,7 @@ class Theme
 
         $this->created_at = new \DateTimeImmutable();
         $this->comments = new ArrayCollection();
+        $this->visits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -124,6 +128,33 @@ class Theme
             if ($comment->getTheme() === $this) {
                 $comment->setTheme(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Visits>
+     */
+    public function getVisits(): Collection
+    {
+        return $this->visits;
+    }
+
+    public function addVisit(Visits $visit): static
+    {
+        if (!$this->visits->contains($visit)) {
+            $this->visits->add($visit);
+            $visit->addTheme($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVisit(Visits $visit): static
+    {
+        if ($this->visits->removeElement($visit)) {
+            $visit->removeTheme($this);
         }
 
         return $this;
