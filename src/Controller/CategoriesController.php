@@ -61,7 +61,7 @@ class CategoriesController extends AbstractController
 
         // Obtenez le total des visites
 
-        $totalVisits = $visitCounter->getCount();
+       
 
 
         $theme = $category->getThemes();
@@ -76,6 +76,6 @@ class CategoriesController extends AbstractController
 
 
 
-        return $this->render('categories/list.html.twig', compact('category', 'pagination', 'totalVisits'));
+        return $this->render('categories/list.html.twig', compact('category', 'pagination',));
     }
 }

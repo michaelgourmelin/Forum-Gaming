@@ -38,7 +38,7 @@ class VisitCounter
         }
 
 
-        $this->entityManager->persist($visits);
+
         $this->entityManager->flush();
     }
     public function getCount()

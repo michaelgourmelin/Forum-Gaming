@@ -48,6 +48,7 @@ class ThemeRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('t')
             ->leftJoin('t.categories', 'c')
+            ->leftJoin('t.visits', 'v')
             ->where('c.slug = :slug')
             ->setParameter('slug', $slug)
             ->orderBy('t.created_at','DESC')

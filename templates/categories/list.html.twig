@@ -23,12 +23,12 @@
     <tbody>
       {% for themes in pagination %}
       <tr>
-        <td class =""><a href="{{ path('comment_list', {slug: themes.slug, id:themes.id}) }}"> {{ themes.name }}</a></td>
-        <td class="w-auto text-white p-3 ">{{ themes.users.firstname }}</td>
-        <td class=" text-white p-3">{{ totalVisits }}</td>
+        <td class=""><a href="{{ path('comment_list', {slug: themes.slug ?? '', id: themes.id}) }}">{{ themes.name }}</a></td>
+        <td class="w-auto text-white p-3">{{ themes.users.firstname }}</td>
+        <td class="text-white p-3">{{ themes.visits.count }}</td>
         <td id="time" class="w-25 text-warning">{{ themes.getTimeSinceCreation() }}</td>
       </tr>
-      {% endfor %}
+    {% endfor %}
     </tbody>
   </table>
   <div class="pagination">
