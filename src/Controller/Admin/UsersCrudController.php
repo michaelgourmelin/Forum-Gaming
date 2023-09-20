@@ -13,10 +13,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Bundle\SecurityBundle\Security as SecurityBundleSecurity;
-
-
-
-
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 
 class UsersCrudController extends AbstractCrudController
 {
@@ -24,7 +22,7 @@ class UsersCrudController extends AbstractCrudController
     private $security;
     // private $usersRepository;
 
-    public function __construct(UserPasswordHasherInterface $passwordHasher, SecurityBundleSecurity $security,UsersRepository $usersRepository)
+    public function __construct(UserPasswordHasherInterface $passwordHasher, SecurityBundleSecurity $security, UsersRepository $usersRepository)
     {
         $this->passwordHasher = $passwordHasher;
         $this->security = $security;
@@ -44,27 +42,36 @@ class UsersCrudController extends AbstractCrudController
             ->setFormType(\Symfony\Component\Form\Extension\Core\Type\PasswordType::class)
             ->setRequired($pageName === Crud::PAGE_NEW)
             ->onlyOnForms();
-     
 
 
-            $fields = [
-                IdField::new('id')->hideOnForm(),
-                EmailField::new('email', 'Email'),
-                TextField::new('firstname', 'Firstname'),
 
-                ChoiceField::new('roles', 'Roles')
-                    ->allowMultipleChoices()
-                    ->setChoices([
+        $fields = [
+            IdField::new('id')->hideOnForm(),
+            EmailField::new('email', 'Email'),
+            TextField::new('firstname', 'Firstname'),
+            ChoiceField::new('isBanned', 'Is Banned')
+                ->setChoices([
+                    'Yes' => true,
+                    'No' => false,
+                ])
+                ->allowMultipleChoices(false) // Cela garantit qu'il ne peut être sélectionné qu'une seule option (true ou false)
+                ->setRequired(true)
+                ->renderExpanded(true) // Pour afficher les boutons radio côte à côte
+                ->onlyOnForms(), // Pour afficher le champ uniquement dans les formulaires
 
-                        'ROLE_MANAGER_ADMIN' => 'ROLE_MANAGER_ADMIN',                        
-                        'ROLE_ADMIN' => 'ROLE_ADMIN',
-                        'ROLE_USER' => 'ROLE_USER',
-                    ])
-                    ->setRequired(true),
-            ];
-        
+            ChoiceField::new('roles', 'Roles')
+                ->allowMultipleChoices()
+                ->setChoices([
 
-        if ($pageName === Crud::PAGE_NEW || $pageName === Crud::PAGE_EDIT) {
+                    'ROLE_MANAGER_ADMIN' => 'ROLE_MANAGER_ADMIN',
+                    'ROLE_ADMIN' => 'ROLE_ADMIN',
+                    'ROLE_USER' => 'ROLE_USER',
+                ])
+                ->setRequired(true),
+        ];
+
+
+        if ($pageName === Crud::PAGE_NEW ) {
             $fields[] = $passwordField;
         }
 

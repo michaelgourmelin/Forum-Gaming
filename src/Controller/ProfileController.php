@@ -33,9 +33,20 @@ class ProfileController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
 
-    #[Route( name: 'index')]
+    #[Route(name: 'index')]
     public function index()
     {
+        /**
+         * @var Users
+         */
+        $user = $this->getUser();
+
+        // Vérifiez si l'utilisateur est banni
+        if ($user->getIsBanned()) {
+            // Redirigez l'utilisateur vers une page d'erreur ou affichez un message d'interdiction
+            return $this->render('/bundles/TwigBundle/Exception/error_banned.html.twig'); // Vous devez créer ce template
+        }
+
         return $this->render('profile/index.html.twig');
     }
 

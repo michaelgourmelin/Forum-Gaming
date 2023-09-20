@@ -42,6 +42,8 @@ class CommentController extends AbstractController
 
     ): Response {
 
+
+
         $slug = $theme->getSlug();
         $requestedSlug = $request->attributes->get('slug');
         if ($requestedSlug !== $slug) {
@@ -83,6 +85,17 @@ class CommentController extends AbstractController
     ): Response {
 
         $this->denyAccessUnlessGranted('ROLE_USER');
+        
+        /**
+         * @var Users
+         */
+        $user = $this->getUser();
+
+        // Vérifiez si l'utilisateur est banni
+        if ($user->getIsBanned()) {
+            // Redirigez l'utilisateur vers une page d'erreur ou affichez un message d'interdiction
+            return $this->render('/bundles/TwigBundle/Exception/error_banned.html.twig'); // Vous devez créer ce template
+        }
 
 
         $comment = new Comment();

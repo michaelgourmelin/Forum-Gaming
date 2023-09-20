@@ -40,11 +40,6 @@ class CategoriesController extends AbstractController
         PaginatorInterface $paginatorInterface,
         VisitCounter $visitCounter,
 
-
-
-
-
-
     ): Response {
 
         // Incrémentez le compteur de visites lorsque quelqu'un visite la page d'accueil
@@ -61,9 +56,7 @@ class CategoriesController extends AbstractController
 
         // Obtenez le total des visites
 
-       
-
-
+    
         $theme = $category->getThemes();
 
       

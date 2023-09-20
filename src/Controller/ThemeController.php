@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Theme;
+use App\Entity\Users;
 use App\Form\ThemeFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,6 +41,17 @@ class ThemeController extends AbstractController
     ): Response {
 
         $this->denyAccessUnlessGranted('ROLE_USER');
+
+        /**
+         * @var Users
+         */
+        $user = $this->getUser();
+
+        // Vérifiez si l'utilisateur est banni
+        if ($user->getIsBanned()) {
+            // Redirigez l'utilisateur vers une page d'erreur ou affichez un message d'interdiction
+            return $this->render('/bundles/TwigBundle/Exception/error_banned.html.twig'); // Vous devez créer ce template
+        }
 
         $theme = new Theme();
         $theme->setUsers($this->getUser());
