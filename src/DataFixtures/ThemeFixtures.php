@@ -30,8 +30,7 @@ class ThemeFixtures extends Fixture implements DependentFixtureInterface
             $categories = $this->getReference('cat-' . rand(1, 11));
             $theme->setCategories($categories);
 
-          
-
+        
             $this->addReference('theme-' . $prod, $theme);
             $manager->persist($theme);
         }

@@ -1,59 +1,64 @@
- 
 {# <nav class="navbar navbar-expand-lg navbar-sticky navbar-airy navbar-light"> #}
 
-<nav class="navbar navbar-expand-lg  fs-2 rounded " data-bs-theme="dark">
-    <div class="container-md ">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link  " aria-current="page" href="{{ path('main') }}">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="https://www.millenium.org/">Actualités</a>
-                </li>
-              
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                       Forum
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="https://www.jeuxvideo.com/forums.htm">JVC</a></li>
-                        <li><a class="dropdown-item" href="https://eu.forums.blizzard.com/fr/wow/">WOW</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="https://www.afjv.com/forums/theme/9-0-esport">AFJC</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                {% if app.user %}
-                {% if is_granted('ROLE_MANAGER_ADMIN') %}
-                <li class="nav-item">
-                    <a class="nav-link" href=" {{ path('admin') }} ">Administration</a>
-                </li>
-                {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link " href="{{ path('profile_index') }}">Mon compte</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link  " href="{{ path('app_logout') }}">Me déconnecter</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link " href="{{ path('app_register') }}">M'inscrire</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="{{ path('app_login') }}">Me connecter</a>
-                </li>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
-</nav>
+    <nav class="navbar navbar-expand-lg  fs-2 rounded " data-bs-theme="dark">
+        <div class="container-md ">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link  " aria-current="page" href="{{ path('main') }}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="https://www.millenium.org/">Actualités</a>
+                    </li>
 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Forum
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.jeuxvideo.com/forums.htm">JVC</a></li>
+                            <li><a class="dropdown-item" href="https://eu.forums.blizzard.com/fr/wow/">WOW</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="https://www.afjv.com/forums/theme/9-0-esport">AFJC</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" action="{{ path('game') }}">
+                    <input class="form-control form-control-sm me-2" name="search" type="search" 
+                        placeholder="Rechercher un jeu">
+                    <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Rechercher</button>
+                </form>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    {% if app.user %}
+                    {% if is_granted('ROLE_MANAGER_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href=" {{ path('admin') }} ">Administration</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ path('profile_index') }}">Mon compte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  " href="{{ path('app_logout') }}">Me déconnecter</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ path('app_register') }}">M'inscrire</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ path('app_login') }}">Me connecter</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>

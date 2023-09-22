@@ -3,14 +3,25 @@
 namespace App\Controller;
 
 use App\Repository\CategoriesRepository;
+use App\Service\ApiEsport;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
-    #[Route('/', name: 'main')]
 
+
+    private $esportApiKey;
+
+    public function __construct( ApiEsport $esportApiKey)
+    {
+       $this->esportApiKey = $esportApiKey;
+    }
+
+    #[Route('/', name: 'main')]
     /**
      * list all category by parent-category
      *
@@ -24,5 +35,22 @@ class MainController extends AbstractController
         ]);
 
     }
+    #[Route('/game', name: 'game')]
+
+    public function game(Request $request): Response
+    {
+        $search = $request->query->get('search');
+      
+    
+        $jsonResponse = $this->esportApiKey->fetchgame($search);
+    
+        $game = json_decode($jsonResponse->getContent(), true);
+    
+        return $this->render('main/games.html.twig', [
+            'game' => $game,
+            'search' => $search
+        ]);
+    }
+
 }
 

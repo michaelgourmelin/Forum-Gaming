@@ -56,10 +56,10 @@ class CategoriesController extends AbstractController
 
         // Obtenez le total des visites
 
-    
+
         $theme = $category->getThemes();
 
-      
+
 
         $pagination = $paginatorInterface->paginate(
             $themeRepository->paginationQuery($category->getSlug()),

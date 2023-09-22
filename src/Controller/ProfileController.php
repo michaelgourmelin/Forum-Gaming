@@ -64,6 +64,17 @@ class ProfileController extends AbstractController
     {
 
 
+        /**
+         * @var Users
+         */
+        $user = $this->getUser();
+
+        // Vérifiez si l'utilisateur est banni
+        if ($user->getIsBanned()) {
+            // Redirigez l'utilisateur vers une page d'erreur ou affichez un message d'interdiction
+            return $this->render('/bundles/TwigBundle/Exception/error_banned.html.twig'); // Vous devez créer ce template
+        }
+
         $user =  $security->getUser();
 
 
@@ -86,6 +97,16 @@ class ProfileController extends AbstractController
     public function updateComments(Request $request, EntityManagerInterface $em, Comment $comment)
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
+        /**
+         * @var Users
+         */
+        $user = $this->getUser();
+
+        // Vérifiez si l'utilisateur est banni
+        if ($user->getIsBanned()) {
+            // Redirigez l'utilisateur vers une page d'erreur ou affichez un message d'interdiction
+            return $this->render('/bundles/TwigBundle/Exception/error_banned.html.twig'); // Vous devez créer ce template
+        }
 
         $form = $this->createForm(CommentFormType::class, $comment);
         $form->handleRequest($request);
@@ -116,6 +137,16 @@ class ProfileController extends AbstractController
 
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
+        /**
+         * @var Users
+         */
+        $user = $this->getUser();
+
+        // Vérifiez si l'utilisateur est banni
+        if ($user->getIsBanned()) {
+            // Redirigez l'utilisateur vers une page d'erreur ou affichez un message d'interdiction
+            return $this->render('/bundles/TwigBundle/Exception/error_banned.html.twig'); // Vous devez créer ce template
+        }
 
         $em->remove($comment);
         $em->flush();
@@ -128,7 +159,15 @@ class ProfileController extends AbstractController
     public function sendEmail()
     {
         // Récupérer l'utilisateur authentifié
+        /**
+         * @var Users
+         */
         $user = $this->getUser();
+        // Vérifiez si l'utilisateur est banni
+        if ($user->getIsBanned()) {
+            // Redirigez l'utilisateur vers une page d'erreur ou affichez un message d'interdiction
+            return $this->render('/bundles/TwigBundle/Exception/error_banned.html.twig'); // Vous devez créer ce template
+        }
 
         // Vérifier si l'utilisateur existe
         if ($user instanceof Users) {
