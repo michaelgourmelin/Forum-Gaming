@@ -22,20 +22,24 @@ class ApiEsport
     }
 
 
-    public function fetch(): JsonResponse
+    public function fetchValorantTournament(): JsonResponse
     {
         // @see https://symfony.com/doc/5.4/http_client.html
-        $response = $this->client->request(
-            'GET',
-            'https://api.rawg.io/api/games/2?key=5d12cadce33f43f29888791bf7b9a3ef',
+        $response = $this->client->request('GET', 'https://api.pandascore.co/videogames/valorant/tournaments', [
 
-        );
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization: Bearer iLAeT9OrdVeS8eBodzDmoxzkS1elXFo4UwP0uo3nzNjOqeujlqs'
+            ],
+        ]);
 
         $content = $response->toArray();
 
         // Transformez le tableau associatif en une réponse JSON
         return new JsonResponse($content);
     }
+
+
 
 
     public function fetchgame(string $identifier): JsonResponse
@@ -48,15 +52,13 @@ class ApiEsport
             // Sinon, construisez l'URL avec le slug
             $url = 'https://api.rawg.io/api/games/' . $identifier . '?key=' . $this->apikey;
         }
-    
+
         // Utilisez l'URL construite pour effectuer la requête
         $response = $this->client->request('GET', $url);
-    
+
         $content = $response->toArray();
-    
+
         // Transformez le tableau associatif en une réponse JSON
         return new JsonResponse($content);
     }
-
-
 }

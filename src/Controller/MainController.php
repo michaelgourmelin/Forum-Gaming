@@ -16,9 +16,9 @@ class MainController extends AbstractController
 
     private $esportApiKey;
 
-    public function __construct( ApiEsport $esportApiKey)
+    public function __construct(ApiEsport $esportApiKey)
     {
-       $this->esportApiKey = $esportApiKey;
+        $this->esportApiKey = $esportApiKey;
     }
 
     #[Route('/', name: 'main')]
@@ -31,26 +31,38 @@ class MainController extends AbstractController
     public function index(CategoriesRepository $categoriesRepository): Response
     {
         return $this->render('main/index.html.twig', [
-            'categories' => $categoriesRepository->findBy([],['category_order' => 'asc'])
+            'categories' => $categoriesRepository->findBy([], ['category_order' => 'asc'])
         ]);
-
     }
     #[Route('/game', name: 'game')]
 
     public function game(Request $request): Response
     {
         $search = $request->query->get('search');
-      
-    
+
+
         $jsonResponse = $this->esportApiKey->fetchgame($search);
-    
+
         $game = json_decode($jsonResponse->getContent(), true);
-    
+
         return $this->render('main/games.html.twig', [
             'game' => $game,
             'search' => $search
         ]);
     }
 
-}
+    #[Route('/valorant', name: 'valorant')]
 
+    public function valorant(): Response
+    {
+
+        $jsonResponse = $this->esportApiKey->fetchValorantTournament();
+
+        $valorant = json_decode($jsonResponse->getContent(), true);
+       
+        return $this->render('main/valorant.html.twig', [
+            'valorant' => $valorant,
+
+        ]);
+    }
+}

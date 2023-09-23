@@ -1,78 +1,51 @@
 body {
-
-
     background-color: #15171E;
+   
 }
-
-
 
 h1 {
-
     margin-top: 80px;
     color: rgb(224, 168, 95);
-    Font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
+    font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
+}
 
+ul {
+    background-color: #15171E;
+   
 
 }
 
-span {
 
-
-    font-size: large;
-    font-family: cursive, Times New Roman, serif;
-    color: rgb(224, 168, 95);
-
-}
-
-nav a {
-
-    font-style: italic;
-    color: white;
-    font-family: cursive, Times New Roman, serif;
-
-
-
-}
 
 p {
-    color: white;
+    color: gold;
     font-family: Georgia, serif;
-
 }
 
-main.container {
-
-    vertical-align: auto;
+.li {
+   
     background-color: #15171E;
 }
 
 h2 {
-    color: white;
-
+    color:white;
 }
 
 section {
     display: flex;
     background-color: #15171E;
     border-bottom: 1px solid grey;
-
-
-
 }
 
 article {
-
     padding: 30px;
     border-top: 1px solid grey;
-
-
-
 }
 
 h1 a {
-    font-size:1em;
+    font-size: 1em;
     color: rgb(224, 168, 95);
-    Font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
+    font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
 }
 
 a {
@@ -84,7 +57,6 @@ a {
 a:hover {
     list-style-type: armenian;
     text-decoration: underline;
-
 }
 
 article p {
@@ -95,16 +67,10 @@ article p {
     padding-bottom: 2em;
 }
 
-
-
 .pagination {
-
     margin-top: 2%;
     margin-left: 75%;
-
     padding: 1.1em;
-
-
 }
 
 .pagination a {
@@ -113,7 +79,6 @@ article p {
 }
 
 .pagination a:hover {
-
     color: rgb(224, 168, 95);
 }
 
@@ -121,9 +86,8 @@ article p {
     font-size: 1.5em;
     color: grey;
     margin-right: 0.3em;
-
 }
-pre {
 
-   color:lightblue;
+pre {
+    color: lightblue;
 }
