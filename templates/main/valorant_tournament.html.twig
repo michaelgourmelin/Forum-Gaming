@@ -1,0 +1,37 @@
+{% extends 'base_game.html.twig' %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Tournois de Valorant</h1>
+    <ul class="list-group">
+        {% if tournament is defined and tournament is not empty %}
+        {% for tournaments in tournament %}
+        <li class="list-group-item bg-dark">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2>{{ tournaments.name }}</h2>
+                    <p><strong>Début :</strong> {{ tournaments.begin_at | date('d/m/Y H:i:s') }}</p>
+                    <p><strong>Fin :</strong> {{ tournaments.end_at | date('d/m/Y H:i:s') }}</p>
+                    {% if tournaments.prizepool is not empty %}
+                    <p><strong>Prix : </strong> {{ tournaments.prizepool }}</p>
+                    {% else %}
+                    <p><strong>Prix : </strong> inconnu</p>
+                    {% endif %}
+                    <p><strong>Tier :</strong> {{ tournaments.tier }}</p>
+                    <p><strong>Ligue :</strong> {{ tournaments.league.name }}</p>
+                </div>
+                <div class="col-md-4 pt-4 ">
+                    {% if tournaments.league.image_url is not empty %}
+                    <img src="{{ tournaments.league.image_url }}" alt="{{ tournaments.league.name }}"
+                        class="img-fluid img-thumbnail">
+                    {% endif %}
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+        {% else %}
+        <li class="list-group-item">Aucun tournoi Valorant disponible.</li>
+    </ul>
+</div>
+{% endif %}
+{% endblock %}

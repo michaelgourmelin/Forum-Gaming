@@ -24,8 +24,24 @@ class ApiEsport
 
     public function fetchValorantTournament(): JsonResponse
     {
-        // @see https://symfony.com/doc/5.4/http_client.html
+       
         $response = $this->client->request('GET', 'https://api.pandascore.co/videogames/valorant/tournaments', [
+
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization: Bearer iLAeT9OrdVeS8eBodzDmoxzkS1elXFo4UwP0uo3nzNjOqeujlqs'
+            ],
+        ]);
+
+        $content = $response->toArray();
+
+        // Transformez le tableau associatif en une réponse JSON
+        return new JsonResponse($content);
+    }
+    public function fetchValorantMatch(): JsonResponse
+    {
+       
+        $response = $this->client->request('GET', 'https://api.pandascore.co/valorant/matches', [
 
             'headers' => [
                 'Accept' => 'application/json',

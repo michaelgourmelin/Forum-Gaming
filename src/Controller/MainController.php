@@ -51,17 +51,32 @@ class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/valorant', name: 'valorant')]
+    #[Route('/valorant/tournament', name: 'tournament')]
 
-    public function valorant(): Response
+    public function tournament(): Response
     {
 
         $jsonResponse = $this->esportApiKey->fetchValorantTournament();
 
-        $valorant = json_decode($jsonResponse->getContent(), true);
+        $tournament = json_decode($jsonResponse->getContent(), true);
        
-        return $this->render('main/valorant.html.twig', [
-            'valorant' => $valorant,
+        return $this->render('main/valorant_tournament.html.twig', [
+            'tournament' => $tournament,
+
+        ]);
+    }
+
+    #[Route('/valorant/matches', name: 'matches')]
+
+    public function match(): Response
+    {
+
+        $jsonResponse = $this->esportApiKey->fetchValorantMatch();
+
+        $matches = json_decode($jsonResponse->getContent(), true);
+       
+        return $this->render('main/valorant_matches.html.twig', [
+            'matches' => $matches,
 
         ]);
     }

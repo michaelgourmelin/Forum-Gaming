@@ -1,0 +1,24 @@
+{% extends 'base_game.html.twig' %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Matchs de Valorant</h1>
+    <ul class="list-group">
+        {% if matches is defined and matches is not empty %}
+        {% for match in matches %}
+        <li class="list-group-item bg-dark">
+            <h2>{{ match.name }}</h2>
+            <p><strong>Début :</strong> {{ match.begin_at | date('d/m/Y H:i:s') }}</p>
+            <p><strong>Type de match :</strong> {{ match.match_type }}</p>
+            <p><strong>Nombre de jeux :</strong> {{ match.number_of_games }}</p>
+            <p><strong>Status :</strong> {{ match.status }}</p>
+            <p><strong>League :</strong> {{ match.league.name }}</p>
+            <img src="{{ match.league.image_url }}" alt="{{ match.league.name }}" class="img-fluid img-thumbnail">
+        </li>
+        {% endfor %}
+        {% else %}
+        <li class="list-group-item">Aucun match de Valorant disponible.</li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}
