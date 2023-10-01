@@ -91,3 +91,9 @@ article p {
 pre {
     color: lightblue;
 }
+
+/* CSS personnalisé pour ajuster la hauteur des div des matches */
+.match-div {
+    max-height: 600px; /* Ajustez cette valeur selon vos besoins */
+    overflow-y: auto; /* Ajoutez une barre de défilement si nécessaire */
+}

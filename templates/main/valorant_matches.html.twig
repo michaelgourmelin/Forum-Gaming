@@ -13,6 +13,7 @@
             <p><strong>Nombre de jeux :</strong> {{ match.number_of_games }}</p>
             <p><strong>Status :</strong> {{ match.status }}</p>
             <p><strong>League :</strong> {{ match.league.name }}</p>
+            <p><strong> :</strong> {{ match.winner }}</p>
             <img src="{{ match.league.image_url }}" alt="{{ match.league.name }}" class="img-fluid img-thumbnail">
         </li>
         {% endfor %}

@@ -57,12 +57,15 @@ class MainController extends AbstractController
     {
 
         $jsonResponse = $this->esportApiKey->fetchValorantTournament();
+        $jsonResponseMatch = $this->esportApiKey->fetchValorantMatch();
 
         $tournament = json_decode($jsonResponse->getContent(), true);
-       
+        $matches = json_decode($jsonResponseMatch->getContent(), true);
+
+        // dd($tournament);
         return $this->render('main/valorant_tournament.html.twig', [
             'tournament' => $tournament,
-
+            'matches' => $matches
         ]);
     }
 
@@ -72,11 +75,14 @@ class MainController extends AbstractController
     {
 
         $jsonResponse = $this->esportApiKey->fetchValorantMatch();
-
+    
+       
         $matches = json_decode($jsonResponse->getContent(), true);
+
        
         return $this->render('main/valorant_matches.html.twig', [
             'matches' => $matches,
+         
 
         ]);
     }

@@ -2,14 +2,14 @@
 
 {% block body %}
 <div class="container mt-5">
-    <h1>Tournois de Valorant</h1>
+    <h1 class="text-center pb-2">Tournois de Valorant</h1>
     <ul class="list-group">
         {% if tournament is defined and tournament is not empty %}
         {% for tournaments in tournament %}
         <li class="list-group-item bg-dark">
             <div class="row">
                 <div class="col-md-8">
-                    <h2>{{ tournaments.name }}</h2>
+                    <h2 style="margin-top: 20px; margin-bottom: 20px;">{{ tournaments.name }}</h2>
                     <p><strong>Début :</strong> {{ tournaments.begin_at | date('d/m/Y H:i:s') }}</p>
                     <p><strong>Fin :</strong> {{ tournaments.end_at | date('d/m/Y H:i:s') }}</p>
                     {% if tournaments.prizepool is not empty %}
@@ -19,14 +19,35 @@
                     {% endif %}
                     <p><strong>Tier :</strong> {{ tournaments.tier }}</p>
                     <p><strong>Ligue :</strong> {{ tournaments.league.name }}</p>
+                    {# <p><strong>Winner :</strong> {{ tournaments.winner_id }}</p> #}
                 </div>
-                <div class="col-md-4 pt-4 ">
+                <div class="col-md-4 pt-4">
                     {% if tournaments.league.image_url is not empty %}
                     <img src="{{ tournaments.league.image_url }}" alt="{{ tournaments.league.name }}"
                         class="img-fluid img-thumbnail">
                     {% endif %}
                 </div>
             </div>
+            
+            {% if matches is defined and matches is not empty %}
+            <div class="row mt-4 match-div">
+                <div class="col-md-12">
+                    <h3 class="text-center">Matchs associés :</h3>
+                    <ul class="list-group">
+                        {% for match in matches %}
+                            <li class="list-group-item bg-primary">
+                                <h2 class="text-center">{{ match.name }}</h2>
+                                <p><strong>Début :</strong> {{ match.begin_at | date('d/m/Y H:i:s') }}</p>
+                                <p><strong>Nombre de jeux :</strong> {{ match.number_of_games }}</p>
+                                <p><strong>Status :</strong> {{ match.status }}</p>
+                                <p><strong>League :</strong> {{ match.league.name }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+            
         </li>
         {% endfor %}
         {% else %}

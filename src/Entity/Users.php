@@ -28,6 +28,10 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 180, unique: true)]
     #[Assert\NotBlank(message: 'Merci de renseigner un email')]
+    #[Assert\Email(
+        message: "{{ value }}n'est pas valide",
+        mode: "strict"
+    )]
     private ?string $email = null;
 
 
