@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -23,23 +24,32 @@ class CommentCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
+      
 
-            yield  IdField::new('id'),
-            yield  TextField::new('commentaire'),
-            yield  AssociationField::new('theme')->autocomplete(),
-            yield  AssociationField::new('users')->autocomplete(),
-            yield  DateTimeField::new('created_at'),
+            yield  IdField::new('id')->hideOnForm();
+            yield  TextField::new('commentaire');
+            yield  DateTimeField::new('created_at');
+            if ($pageName === Crud::PAGE_INDEX) {
+                yield  AssociationField::new('users')->autocomplete();
+                yield  AssociationField::new('theme')->autocomplete();
+            }
+        if ($pageName === Crud::PAGE_EDIT) {
 
+            yield  ChoiceField::new('isDelete', 'Is Delete')
+            ->setChoices([
+                'Yes' => true,
+                'No' => false,
+            ]);
+            
+        }
 
-        ];
+    
     }
 
     public function configureActions(Actions $actions): Actions
     {
         return $actions
             // ...
-            ->remove(Crud::PAGE_INDEX, Action::NEW)
-            ->remove(Crud::PAGE_INDEX, Action::EDIT);
+            ->remove(Crud::PAGE_INDEX, Action::NEW);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Entity\Theme;
+use App\Entity\Users;
 use App\Form\CommentFormType;
 use App\Repository\CommentRepository;
 use App\Service\VisitCounter;
@@ -86,15 +87,15 @@ class CommentController extends AbstractController
 
         $this->denyAccessUnlessGranted('ROLE_USER');
         
-        /**
-         * @var Users
-         */
+      /**
+       * @var Users 
+       */
         $user = $this->getUser();
 
         // Vérifiez si l'utilisateur est banni
         if ($user->getIsBanned()) {
-            // Redirigez l'utilisateur vers une page d'erreur ou affichez un message d'interdiction
-            return $this->render('/bundles/TwigBundle/Exception/error_banned.html.twig'); // Vous devez créer ce template
+            // Redirigez l'utilisateur vers une page d'erreur et affichez un message d'interdiction
+            return $this->render('/bundles/TwigBundle/Exception/error_banned.html.twig'); 
         }
 
 

@@ -71,3 +71,12 @@ class UsersFixtures extends Fixture
         $manager->flush();
     }
 }
+
+
+
+// private $passwordEncoder;
+
+// public function __construct(UserPasswordHasherInterface $passwordEncoder)
+// {
+//     $this->passwordEncoder = $passwordEncoder;
+// }

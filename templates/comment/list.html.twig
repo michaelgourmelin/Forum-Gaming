@@ -15,13 +15,17 @@
     </div>
     {% for comments in pagination %}
     <article>
-      <span>{{ comments.users.firstname }} : {{comments.createdAt|format_datetime(locale='fr')}}</span>
+      <span>{{ comments.users.firstname }} : {{ comments.createdAt|format_datetime(locale='fr') }}</span>
+      {% if comments.isDelete == true %}
+      <p class="text-light bg-danger"><i>Ce commentaire a été supprimer par l'administrateur en raison du non-respect des règles du forum.</i></p>
+      {% else %}
       <p>{{ comments.commentaire }}</p>
+      {% endif %}
     </article>
     {% endfor %}
   </section>
   <div class="pagination">
-    {{ knp_pagination_render(pagination)}}
+    {{ knp_pagination_render(pagination) }}
   </div>
 </main>
 {% endblock %}
