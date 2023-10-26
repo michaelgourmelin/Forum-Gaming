@@ -42,6 +42,7 @@ class Comment
     private $isDelete = false;
 
 
+
     public function __construct()
     {
 
@@ -105,4 +106,5 @@ class Comment
 
         return $this;
     }
+
 }

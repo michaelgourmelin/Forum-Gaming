@@ -29,6 +29,7 @@ services:
         # quels arguments à transmettre au constructeur ?
         arguments:
             $apikey: "%app.esport_api_key%"
+ 
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

@@ -20,9 +20,17 @@ h1 {
     color: white;
     position: relative;
     z-index: 2;
-    font-family: cursive,Times New Roman, serif;
+    font-family: cursive, Times New Roman, serif;
 
 
+}
+
+.col-form-label{
+    color: transparent;
+}
+.vich-image {
+
+    width: 45%;
 }
 
 h2 {
@@ -213,17 +221,15 @@ aside {
     font-size: 1em;
     Font-family: Baskerville, Baskerville Old Face, Garamond, Times New Roman, serif;
 }
-#verify_email{
+
+#verify_email {
 
     z-index: 3;
     position: relative;
 }
 
-.btn-close
-
-{
-height: auto;
+.btn-close {
+    height: auto;
 
 
 }
-

@@ -1,0 +1,18 @@
+{% extends "base_add_theme.html.twig" %}
+{% block title %} Ajouter un avatar {% endblock %}
+
+{% block body %}
+<main class="container">
+    <section class="row">
+        <div class="col-12">
+            <h1> Ajouter une image :</h1>
+            <div class="form">
+                {{ form_start(form) }}
+                {{ form_row(form.imageFile)}}
+                <button  type="submit" class="btn btn-warning btn-lg text-white">Valider</button>        
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

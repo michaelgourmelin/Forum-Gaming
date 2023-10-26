@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use App\Entity\Trait\CreatedAtTrait;
 use App\Repository\UsersRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -17,8 +19,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[UniqueEntity(fields: ['email'], message: 'Il existe déja un compte pour cet e-mail')]
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
+#[Vich\Uploadable]
 
-class Users implements UserInterface, PasswordAuthenticatedUserInterface
+class Users implements UserInterface, PasswordAuthenticatedUserInterface, \Serializable
+
 {
     use CreatedAtTrait;
     #[ORM\Id]
@@ -56,6 +60,16 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private $firstname;
 
 
+    #[Vich\UploadableField(mapping: 'user', fileNameProperty: 'imageName', size: 'imageSize')]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $imageSize = null;
+
+
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Theme::class)]
     private Collection $themes;
 
@@ -68,7 +82,8 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isBanned = false;
 
-
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
 
 
 
@@ -245,4 +260,70 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+    public function getImageUrl(): ?string
+    {
+        if ($this->imageName) {
+            return '/images/users/' . $this->imageName;
+        }
+
+        return null;
+    }
+
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageSize(?int $imageSize): void
+    {
+        $this->imageSize = $imageSize;
+    }
+
+    public function getImageSize(): ?int
+    {
+        return $this->imageSize;
+    }
+
+    public function serialize()
+{
+    return serialize([
+        $this->id,
+        $this->email,
+        $this->password
+        // Add other properties that you want to serialize here
+    ]);
+}
+
+public function unserialize($serialized)
+{
+    [
+        $this->id,
+        $this->email,
+        $this->password
+        // Add other properties that you want to unserialize here
+    ] = unserialize($serialized);
+}
+ 
 }

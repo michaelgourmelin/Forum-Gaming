@@ -86,16 +86,16 @@ class CommentController extends AbstractController
     ): Response {
 
         $this->denyAccessUnlessGranted('ROLE_USER');
-        
-      /**
-       * @var Users 
-       */
+
+        /**
+         * @var Users 
+         */
         $user = $this->getUser();
 
         // Vérifiez si l'utilisateur est banni
         if ($user->getIsBanned()) {
             // Redirigez l'utilisateur vers une page d'erreur et affichez un message d'interdiction
-            return $this->render('/bundles/TwigBundle/Exception/error_banned.html.twig'); 
+            return $this->render('/bundles/TwigBundle/Exception/error_banned.html.twig');
         }
 
 
