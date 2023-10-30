@@ -14,11 +14,12 @@ class UsersPicturesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('imageFile', VichImageType::class, [
-            
+
             'required' => false,
             'allow_delete' => true,
             'download_uri' => true,
             'image_uri' => true,
+            'imagine_pattern' => 'my_thumb',
             'constraints' => [
                 new File([
                     'maxSize' => '8M',  // Set the maximum file size (adjust as needed)

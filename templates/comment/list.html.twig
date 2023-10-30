@@ -13,11 +13,14 @@
         <a href="{{ path('comment_commentaire',{slug: theme.slug, id: theme.id}) }}"> Ajouter un commentaire</a>
       </div>
     </div>
+
     {% for comments in pagination %}
     <article>
+      {# <img src="{{ asset('images/users/' ~ comments.users.imageName)|imagine_filter('carre') }}" alt="User Image"> #}
       <span>{{ comments.users.firstname }} : {{ comments.createdAt|format_datetime(locale='fr') }}</span>
       {% if comments.isDelete == true %}
-      <p class="text-light bg-danger"><i>Ce commentaire a été supprimer par l'administrateur en raison du non-respect des règles du forum.</i></p>
+      <p class="text-light bg-danger"><i>Ce commentaire a été supprimer par l'administrateur en raison du non-respect
+          des règles du forum.</i></p>
       {% else %}
       <p>{{ comments.commentaire }}</p>
       {% endif %}

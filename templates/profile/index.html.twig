@@ -2,11 +2,16 @@
 
 {% block title %}Mon compte{% endblock %}
 
-{% block body %}
 
-    <div class="container">
-        <div class="row">
-            {% include "_profilnav.html.twig" %}       
-        </div>
+{% block body %}
+<div class="container">
+    <div class="image-container">
+        {# {% if app.user.imageName is not empty %}
+            <img src="{{ asset('images/users/' ~ app.user.imageName)|imagine_filter('carre') }}" alt="User Image">
+        {% endif %} #}
     </div>
+    <div class="row">
+        {% include "_profilnav.html.twig" %}
+    </div>
+</div>
 {% endblock %}

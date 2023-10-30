@@ -21,7 +21,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
 #[Vich\Uploadable]
 
-class Users implements UserInterface, PasswordAuthenticatedUserInterface, \Serializable
+class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
 {
     use CreatedAtTrait;
@@ -60,16 +60,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface, \Seria
     private $firstname;
 
 
-    #[Vich\UploadableField(mapping: 'user', fileNameProperty: 'imageName', size: 'imageSize')]
-    private ?File $imageFile = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?string $imageName = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?int $imageSize = null;
-
-
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Theme::class)]
     private Collection $themes;
 
@@ -81,11 +71,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface, \Seria
 
     #[ORM\Column(type: 'boolean')]
     private $isBanned = false;
-
-    #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $updatedAt = null;
-
-
 
     public function __construct()
     {
@@ -261,69 +246,51 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface, \Seria
         return $this;
     }
 
-    public function setImageFile(?File $imageFile = null): void
-    {
-        $this->imageFile = $imageFile;
+    // public function setImageFile(?File $imageFile = null): void
+    // {
+    //     $this->imageFile = $imageFile;
 
-        if (null !== $imageFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
-        }
-    }
+    //     if (null !== $imageFile) {
+    //         // It is required that at least one field changes if you are using doctrine
+    //         // otherwise the event listeners won't be called and the file is lost
+    //         $this->updatedAt = new \DateTimeImmutable();
+    //     }
+    // }
 
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-    public function getImageUrl(): ?string
-    {
-        if ($this->imageName) {
-            return '/images/users/' . $this->imageName;
-        }
+    // public function getImageFile(): ?File
+    // {
+    //     return $this->imageFile;
+    // }
+    // public function getImageUrl(): ?string
+    // {
+    //     if ($this->imageName) {
+    //         return '/images/users/' . $this->imageName;
+    //     }
 
-        return null;
-    }
+    //     return null;
+    // }
 
 
-    public function setImageName(?string $imageName): void
-    {
-        $this->imageName = $imageName;
-    }
+    // public function setImageName(?string $imageName): void
+    // {
+    //     $this->imageName = $imageName;
+    // }
 
-    public function getImageName(): ?string
-    {
-        return $this->imageName;
-    }
+    // public function getImageName(): ?string
+    // {
+    //     return $this->imageName;
+    // }
 
-    public function setImageSize(?int $imageSize): void
-    {
-        $this->imageSize = $imageSize;
-    }
+    // public function setImageSize(?int $imageSize): void
+    // {
+    //     $this->imageSize = $imageSize;
+    // }
 
-    public function getImageSize(): ?int
-    {
-        return $this->imageSize;
-    }
+    // public function getImageSize(): ?int
+    // {
+    //     return $this->imageSize;
+    // }
 
-    public function serialize()
-{
-    return serialize([
-        $this->id,
-        $this->email,
-        $this->password
-        // Add other properties that you want to serialize here
-    ]);
-}
 
-public function unserialize($serialized)
-{
-    [
-        $this->id,
-        $this->email,
-        $this->password
-        // Add other properties that you want to unserialize here
-    ] = unserialize($serialized);
-}
  
 }

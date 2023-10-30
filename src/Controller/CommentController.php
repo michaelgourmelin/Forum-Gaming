@@ -54,6 +54,7 @@ class CommentController extends AbstractController
             );
         }
 
+        
 
         $visitCounter->increment($theme);
         $category = $theme->getCategories();

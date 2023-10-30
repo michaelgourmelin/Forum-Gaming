@@ -4,10 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Categories;
-use App\Entity\Theme;
-use App\Entity\Visits;
 use App\Repository\ThemeRepository;
-use App\Repository\VisitsRepository;
 use App\Service\VisitCounter;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

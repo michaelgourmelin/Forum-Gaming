@@ -209,18 +209,18 @@ class ProfileController extends AbstractController
         $form = $this->createForm(UsersPicturesType::class, $user);
         $form->handleRequest($request);
     
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Handle file upload using VichUploader
+        // if ($form->isSubmitted() && $form->isValid()) {
+        //     // Handle file upload using VichUploader
     
-            if ($user->getImageFile() instanceof UploadedFile) {
-                $user->setImageFile($user->getImageFile()); // This will upload the file
-                $user->setImageName($user->getImageFile()->getFilename()); // Set the filename
-                $em->persist($user);
-                $em->flush();
-                // Redirect or perform other actions after a successful upload
-                return $this->redirectToRoute('profile_index');
-            }
-        }
+        //     if ($user->getImageFile() instanceof UploadedFile) {
+        //         $user->setImageFile($user->getImageFile()); // This will upload the file
+        //         $user->setImageName($user->getImageFile()->getFilename()); // Set the filename
+        //         $em->persist($user);
+        //         $em->flush();
+        //         // Redirect or perform other actions after a successful upload
+        //         return $this->redirectToRoute('profile_index');
+        //     }
+        // }
     
         return $this->render('profile/add_picture.html.twig', [
             'form' => $form->createView(),
@@ -244,19 +244,19 @@ class ProfileController extends AbstractController
         }
     
         // Check if the user has a picture
-        $picture = $user->getImageFile();
+        // $picture = $user->getImageFile();
         
-        if ($picture) {
-            // Remove the picture file from the server (assuming VichUploader handles it)
-            $user->setImageFile(null);
+        // if ($picture) {
+        //     // Remove the picture file from the server (assuming VichUploader handles it)
+        //     $user->setImageFile(null);
     
-            // Clear the image name if needed
-            $user->setImageName(null);
-            $user->setImageSize(null);
+        //     // Clear the image name if needed
+        //     $user->setImageName(null);
+        //     $user->setImageSize(null);
         
-            $em->persist($user);
-            $em->flush();
-        }
+        //     $em->persist($user);
+        //     $em->flush();
+        // }
     
         // Redirect to the user's profile or another appropriate page
         return $this->redirectToRoute('profile_index');
