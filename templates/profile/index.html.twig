@@ -6,9 +6,10 @@
 {% block body %}
 <div class="container">
     <div class="image-container">
-        {# {% if app.user.imageName is not empty %}
-            <img src="{{ asset('images/users/' ~ app.user.imageName)|imagine_filter('carre') }}" alt="User Image">
-        {% endif %} #}
+        {% if app.user.userPicture is not null and app.user.userPicture.imageName is not empty %}
+        <img src="{{ asset('images/users/' ~ app.user.userPicture.imageName)|imagine_filter('carre') }}"
+            alt="User Image">
+        {% endif %}
     </div>
     <div class="row">
         {% include "_profilnav.html.twig" %}

@@ -5,18 +5,20 @@ namespace App\Controller;
 
 use Symfony\Component\Mime\Address;
 use App\Entity\Comment;
+use App\Entity\UserPicture;
 use App\Entity\Users;
 use App\Form\CommentFormType;
 use App\Form\UsersPicturesType;
 use App\Repository\CommentRepository;
 use App\Security\EmailVerifier;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\SecurityBundle\Security;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -193,34 +195,34 @@ class ProfileController extends AbstractController
 
     public function addPictures(Request $request, EntityManagerInterface $em)
     {
-        // Récupérer l'utilisateur authentifié
-
         /**
-         * @var users
+         * @var Users
          */
         $user = $this->getUser();
     
-        // Vérifiez si l'utilisateur est banni
         if ($user->getIsBanned()) {
-            // Redirigez l'utilisateur vers une page d'erreur ou affichez un message d'interdiction
             return $this->render('error_banned.html.twig');
         }
     
-        $form = $this->createForm(UsersPicturesType::class, $user);
+        $userPicture = new UserPicture();
+        $form = $this->createForm(UsersPicturesType::class, $userPicture);
         $form->handleRequest($request);
     
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     // Handle file upload using VichUploader
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Use VichUploader to handle file upload
+            $imageFile = $userPicture->getImageFile();
     
-        //     if ($user->getImageFile() instanceof UploadedFile) {
-        //         $user->setImageFile($user->getImageFile()); // This will upload the file
-        //         $user->setImageName($user->getImageFile()->getFilename()); // Set the filename
-        //         $em->persist($user);
-        //         $em->flush();
-        //         // Redirect or perform other actions after a successful upload
-        //         return $this->redirectToRoute('profile_index');
-        //     }
-        // }
+            if ($imageFile) {
+                $userPicture->setImageFile($imageFile); // This is usually not needed if using VichUploader
+                $userPicture->setImageName($imageFile->getFileName()); // Set the file name from the uploaded file
+                $userPicture->setImageSize($imageFile->getSize()); // Set the file size from the uploaded file
+    
+                $userPicture->setUser($user);
+                $em->persist($userPicture);
+                $em->flush();
+            }
+            return $this->redirectToRoute('profile_index');
+        }
     
         return $this->render('profile/add_picture.html.twig', [
             'form' => $form->createView(),
@@ -228,36 +230,28 @@ class ProfileController extends AbstractController
     }
 
 
-    #[Route('/remove', name: 'remove')]
-    public function deletePicture(EntityManagerInterface $em)
+    #[Route('/remove/{id}', name: 'remove')]
+
+    public function deletePicture( EntityManagerInterface $em): RedirectResponse
     {
-        // Récupérer l'utilisateur authentifié
+        // Récupérer l utilisateur authentifié
         /**
-         * @var users
+         * @var Users
          */
         $user = $this->getUser();
-    
-        // Vérifiez si l'utilisateur est banni
-        if ($user->getIsBanned()) {
-            // Redirigez l'utilisateur vers une page d'erreur ou affichez un message d'interdiction
-            return $this->render('error_banned.html.twig');
+
+        // Vérifiez if the user has a profile picture
+        if ($user->getUserPicture() !== null) {
+            $picture = $user->getUserPicture();
+            $user->setUserPicture(null); // Remove the user's profile picture
+
+            $em->remove($picture); // Mark the profile picture for removal
+            $em->flush(); // Persist the changes
+
+            // Redirect to the user's profile or another appropriate page
+            return $this->redirectToRoute('profile_index');
         }
-    
-        // Check if the user has a picture
-        // $picture = $user->getImageFile();
-        
-        // if ($picture) {
-        //     // Remove the picture file from the server (assuming VichUploader handles it)
-        //     $user->setImageFile(null);
-    
-        //     // Clear the image name if needed
-        //     $user->setImageName(null);
-        //     $user->setImageSize(null);
-        
-        //     $em->persist($user);
-        //     $em->flush();
-        // }
-    
+
         // Redirect to the user's profile or another appropriate page
         return $this->redirectToRoute('profile_index');
     }

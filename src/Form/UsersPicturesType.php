@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Users;
+use App\Entity\UserPicture;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,7 +22,7 @@ class UsersPicturesType extends AbstractType
             'imagine_pattern' => 'my_thumb',
             'constraints' => [
                 new File([
-                    'maxSize' => '8M',  // Set the maximum file size (adjust as needed)
+                    'maxSize' => '10M',  // Set the maximum file size (adjust as needed)
                     'mimeTypes' => [
                         'image/jpeg',
                         'image/png',
@@ -36,7 +36,7 @@ class UsersPicturesType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Users::class,
+            'data_class' => UserPicture::class,
         ]);
     }
 }
