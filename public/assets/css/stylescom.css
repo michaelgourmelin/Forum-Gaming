@@ -79,8 +79,9 @@ article {
     color: rgb(224, 168, 95);
     Font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
 }
+
 h1 a {
-    font-size:1em;
+    font-size: 1em;
     color: rgb(224, 168, 95);
     Font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
 }
@@ -156,4 +157,36 @@ article p {
     color: grey;
     margin-right: 0.3em;
 
+}
+
+.comment {
+
+    margin-left: 20px;
+
+}
+
+@media (max-width: 767px) {
+
+
+    article.container {
+
+        padding: 1px;
+       
+
+    }
+
+    article p {
+        font-size: 12px;
+        width: 40%;
+    }
+    
+    .scrollable-text {
+        overflow: auto;
+        max-height: 200px; /* Ajustez la hauteur maximale au besoin */
+      }
+      .comment {
+
+        margin-left: 5px;
+    
+    }
 }

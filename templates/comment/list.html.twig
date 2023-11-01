@@ -13,8 +13,8 @@
     </div>
 
     {% for comments in pagination %}
-    <article class="container">
-      <div class="d-flex"> {# Use Bootstrap's flex utility classes #}
+    <article class="container-md">
+      <div class="d-flex">  
         <div class="img">
           {% if comments.users.userPicture is not null and comments.users.userPicture.imageName is not null %}
           <img src="{{ asset('images/users/' ~ comments.users.userPicture.imageName)|imagine_filter('carre') }}" alt="User Image">
@@ -22,7 +22,7 @@
           <img src="{{ asset('images/users/istockphoto-1396814518-612x612.jpg')|imagine_filter('carre') }}" alt="Pas d'image">
           {% endif %}
         </div>
-        <div class="comment" style="margin-left: 20px;"> {# Add margin to create space between the divs #}
+        <div class="comment scrollable-text">
           <span>{{ comments.users.firstname }} : {{ comments.createdAt|format_datetime(locale='fr') }}</span>
           {% if comments.isDelete == true %}
           <p class="text-light bg-danger"><i>Ce commentaire a été supprimé par l'administrateur en raison du non-respect des règles du forum.</i></p>

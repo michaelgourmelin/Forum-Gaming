@@ -19,18 +19,14 @@ h1 {
     font-style: italic;
     color: white;
     position: relative;
-    z-index: 2;
+    z-index: 1;
     font-family: cursive, Times New Roman, serif;
 
 
 }
 
-.col-form-label{
+.col-form-label {
     color: transparent;
-}
-.vich-image {
-
-    width: 45%;
 }
 
 h2 {
@@ -232,4 +228,32 @@ aside {
     height: auto;
 
 
+}
+.form{
+
+    width: 30%;
+}
+
+@media (max-width: 440px) {
+    .theme {
+        position: absolute;
+        top: 35px;
+        right: 0px;
+        z-index: 15;
+    }
+
+    .img-fluid {
+        display: none !important;
+        /* Use !important to ensure it takes precedence */
+    }
+
+    h1 {
+
+       font-size: 2em;
+    }
+    .form{
+
+        width: 90%;
+    }
+ 
 }

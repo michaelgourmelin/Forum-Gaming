@@ -1,12 +1,8 @@
 .table {
 
-    width: 100%;
     margin: 0 auto;
     margin-top: 80px;
     text-align: left;
-
-
-
 }
 
 
@@ -28,11 +24,16 @@ h1 {
     color: rgb(224, 168, 95);
     Font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
 }
+.navbar {
 
-nav {
-
+    background-color: transparent;
     font-style: italic;
     color: white;
+    position: relative;
+    z-index: 1;
+    font-family: cursive, Times New Roman, serif;
+
+
 }
 
 p {
@@ -125,3 +126,21 @@ a:hover {
 
 
 }
+@media (max-width: 440px) {
+    .table th {
+        padding: 2px;
+    }
+    .table td {
+
+
+        font-size: 15px;
+
+    
+    }
+    th {
+
+        padding-left: 3px;
+    
+    }
+
+  }
