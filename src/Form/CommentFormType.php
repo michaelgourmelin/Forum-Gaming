@@ -30,8 +30,7 @@ class CommentFormType extends AbstractType
                 'attr' => [
                     'id' => 'comment_form_commentaire', 
                     'rows' => 6,
-                    'style' => 'resize:none;',
-                    'wrap' => 'hard',
+                    'wrap' => 'soft',
                     'maxlength' => 500,
                 ],
             ]);

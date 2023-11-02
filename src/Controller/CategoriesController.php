@@ -35,12 +35,10 @@ class CategoriesController extends AbstractController
         ThemeRepository $themeRepository,
         Request $request,
         PaginatorInterface $paginatorInterface,
-        VisitCounter $visitCounter,
 
     ): Response {
 
-        // Incrémentez le compteur de visites lorsque quelqu'un visite la page d'accueil
-        // Obtenez le slug attendu pour cette catégorie
+ 
 
         $slug = $category->getSlug();
         $requestedSlug = $request->attributes->get('slug');
@@ -51,12 +49,8 @@ class CategoriesController extends AbstractController
             );
         }
 
-        // Obtenez le total des visites
-
 
         $theme = $category->getThemes();
-
-
 
         $pagination = $paginatorInterface->paginate(
             $themeRepository->paginationQuery($category->getSlug()),

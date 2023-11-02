@@ -165,7 +165,7 @@ article p {
 
 }
 
-@media (max-width: 767px) {
+@media (max-width: 440px) {
 
 
     article.container {
@@ -177,16 +177,14 @@ article p {
 
     article p {
         font-size: 12px;
-        width: 40%;
+    
     }
     
-    .scrollable-text {
-        overflow: auto;
-        max-height: 200px; /* Ajustez la hauteur maximale au besoin */
-      }
+
       .comment {
 
-        margin-left: 5px;
+        margin-left: 5px; 
     
     }
+
 }
