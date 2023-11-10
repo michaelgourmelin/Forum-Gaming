@@ -5,14 +5,13 @@ namespace App\Controller;
 
 use App\Entity\Categories;
 use App\Repository\ThemeRepository;
-use App\Service\VisitCounter;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\String\Slugger\SluggerInterface;
+
 
 #[Route('/categories', name: 'categories_')]
 
@@ -48,9 +47,6 @@ class CategoriesController extends AbstractController
                 RedirectResponse::HTTP_MOVED_PERMANENTLY
             );
         }
-
-
-        $theme = $category->getThemes();
 
         $pagination = $paginatorInterface->paginate(
             $themeRepository->paginationQuery($category->getSlug()),

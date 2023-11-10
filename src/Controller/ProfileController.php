@@ -32,6 +32,7 @@ class ProfileController extends AbstractController
 {
 
     private EmailVerifier $emailVerifier;
+    
     public function __construct(EmailVerifier $emailVerifier)
     {
         $this->emailVerifier = $emailVerifier;
@@ -246,7 +247,7 @@ class ProfileController extends AbstractController
             $user->setUserPicture(null); // Remove the user's profile picture
 
             $em->remove($picture); // Mark the profile picture for removal
-            $em->flush(); // Persist the changes
+            $em->flush(); 
 
             // Redirect to the user's profile or another appropriate page
             return $this->redirectToRoute('profile_index');
