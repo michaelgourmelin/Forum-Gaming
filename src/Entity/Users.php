@@ -81,10 +81,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         $this->themes = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
-    public function __toString()
-    {
-        return $this->getIsBanned() ?? '';
-    }
 
 
     public function getId(): ?int
