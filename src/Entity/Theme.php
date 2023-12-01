@@ -28,7 +28,7 @@ class Theme
     #[Assert\NotBlank(message: 'Merci de renseigner un thème')]
     #[Assert\Length(
         min: 5,
-        max: 25,
+        max: 50,
         minMessage: 'Votre thème doit faire au moins {{ limit }} caractères',
         maxMessage: 'Votre thème ne peut pas faire plus de {{ limit }} caractères',
     )]

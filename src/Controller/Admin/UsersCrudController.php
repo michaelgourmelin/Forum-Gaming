@@ -4,9 +4,11 @@ namespace App\Controller\Admin;
 
 use App\Entity\Users;
 use App\Repository\UsersRepository;
+use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -19,14 +21,15 @@ use Symfony\Component\Form\Extension\Core\Type\RadioType;
 class UsersCrudController extends AbstractCrudController
 {
     private $passwordHasher;
+    private EmailVerifier $emailVerifier;
     private $security;
-    // private $usersRepository;
 
-    public function __construct(UserPasswordHasherInterface $passwordHasher, SecurityBundleSecurity $security, UsersRepository $usersRepository)
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher, SecurityBundleSecurity $security, EmailVerifier $emailVerifier)
     {
         $this->passwordHasher = $passwordHasher;
         $this->security = $security;
-        // $this->usersRepository = $usersRepository;
+        $this->emailVerifier = $emailVerifier;
     }
 
     public static function getEntityFqcn(): string
@@ -69,9 +72,12 @@ class UsersCrudController extends AbstractCrudController
                 ])
                 ->setRequired(true),
         ];
+        // Add isBanned to list view
+        if ($pageName === Crud::PAGE_INDEX) {
+            $fields[] = BooleanField::new('isBanned', 'Is Banned');
+        }
 
-
-        if ($pageName === Crud::PAGE_NEW ) {
+        if ($pageName === Crud::PAGE_NEW) {
             $fields[] = $passwordField;
         }
 
