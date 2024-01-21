@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Categories;
 use App\Repository\CategoriesRepository;
+use App\Repository\ThemeRepository;
 use App\Service\ApiEsport;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,6 +37,30 @@ class MainController extends AbstractController
             'categories' => $categoriesRepository->findBy([], ['category_order' => 'asc'])
         ]);
     }
+
+    #[Route('/search', name: 'search')]
+    public function search(Request $request,
+    ThemeRepository $themeRepository,)
+
+    {
+        $search = $request->query->get('search');
+
+        $theme = $themeRepository->findOneByName($search);
+
+        return $this->render('categories/result.html.twig',[
+
+            'theme' => $theme,
+            'search' => $search
+        ]);
+
+
+    }
+
+
+
+
+
+
     #[Route('/game', name: 'game')]
 
     public function game(Request $request): Response

@@ -1,0 +1,36 @@
+{% extends 'base_theme.html.twig' %}
+
+{% block title %} {% endblock %}
+
+{% block body %}
+<main class="container">
+  <section class="row">
+  </section>
+</main>
+<div class="container">
+  <div class="table-responsive-md">
+    <table class="table border-secondary" data-toggle="table" data-pagination="true">
+      <thead>
+        <tr>
+          <th>Sujet</th>
+          <th>Pseudo</th>
+          <th>Vues</th>
+          <th  data-sortable="true" data-field="Date">Activité</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for themes in theme %}
+        <tr>
+          <td><a href="{{ path('comment_list', {slug: themes.slug ?? '', id: themes.id}) }}">{{ themes.name }}</a></td>
+          <td class="w-auto text-white p-3">{{ themes.users.firstname }}</td>
+          <td class="text-white p-3">{{ themes.visits.count }}</td>
+          <td id="time" class="w-25 text-warning">{{ themes.getTimeSinceCreation() }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+{% endblock %}
+

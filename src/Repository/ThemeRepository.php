@@ -51,19 +51,21 @@ class ThemeRepository extends ServiceEntityRepository
             ->leftJoin('t.visits', 'v')
             ->where('c.slug = :slug')
             ->setParameter('slug', $slug)
-            ->orderBy('t.created_at','DESC')
+            ->orderBy('t.created_at', 'DESC')
             ->getQuery();
     }
 
-   
-
-    //    public function findOneBySomeField($value): ?Theme
-    //    {
-    //        return $this->createQueryBuilder('t')
-    //            ->andWhere('t.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+   /**
+     * @return Theme[] Returns an array of Theme objects
+     */
+    public function findOneByName($search)
+    {
+        return $this->createQueryBuilder('t')
+            ->leftJoin('t.visits', 'v')
+            ->where('t.name LIKE :search')
+            ->setParameter('search', '%' . $search . '%')
+            ->orderBy('t.created_at', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }
