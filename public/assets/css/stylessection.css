@@ -229,10 +229,7 @@ aside {
 
 
 }
-.form{
 
-    width: 30%;
-}
 
 @media (max-width: 440px) {
     .theme {
@@ -240,7 +237,7 @@ aside {
         top: 35px;
         right: 0px;
         z-index: 15;
-      
+
     }
 
     .img-fluid {
@@ -250,11 +247,13 @@ aside {
 
     h1 {
 
-       font-size: 2em;
+        font-size: 2em;
     }
-    .form{
+
+    .form {
 
         width: 90%;
     }
  
+
 }

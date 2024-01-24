@@ -1,0 +1,182 @@
+body {
+
+    background: linear-gradient(#13141A, rgb(56, 37, 12));
+    position: relative;
+}
+
+h1 {
+
+    margin-bottom: 1rem;
+
+    color: rgb(224, 168, 95);
+    font-size: 50px;
+    Font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
+
+}
+
+.navbar {
+
+    background-color: transparent;
+    font-style: italic;
+    color: white;
+    position: relative;
+    z-index: 1;
+    font-family: cursive, Times New Roman, serif;
+
+
+}
+
+
+h2 {
+    color: rgb(224, 168, 95);
+    font-size: 2.6em;
+    text-align: center;
+    margin-top: 5%;
+    Font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
+
+
+}
+
+
+
+a {
+    padding: 5px;
+    text-decoration: none;
+    list-style-type: none;
+    color: white;
+
+}
+
+a:hover {
+    list-style-type: armenian;
+    text-decoration: underline;
+    color: white;
+}
+
+h3 {
+    padding: 10px;
+    font-size: x-large;
+
+}
+
+p {
+
+    color: rgb(224, 168, 95);
+    font-size: 40px;
+    Font-family: Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;
+
+}
+
+.col-12 {
+    padding: 1em;
+    margin-bottom: 1em;
+
+}
+
+
+label {
+
+    font-size: 30px;
+    color: rgb(224, 168, 95);
+
+}
+
+
+footer {
+
+    border-top: 15px;
+
+    border-color: rgb(224, 168, 95);
+    ;
+}
+
+
+footer {
+    position: relative;
+    z-index: 2;
+}
+
+
+
+
+
+aside {
+
+    margin: 0 auto;
+    margin-bottom: 5%;
+
+
+}
+
+.container {
+    margin-top: 5%;
+    width: 30%;
+  
+
+
+}
+.smiley-buttons {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+   
+
+}
+
+.smiley {
+  
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    background-color: rgb(224, 168, 95);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.smiley:hover {
+    background-color: #45a049;
+
+}
+
+.content {
+ 
+  
+    margin: 0 auto ;
+    width: 80%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 7px;
+    background-color: rgb(44, 146, 177);
+}
+
+@media (max-width: 440px) {
+    .container {
+     
+      width: 100%;
+    }
+
+
+
+    h1 {
+
+        font-size: 1.2em;
+    }
+
+ 
+    .content {
+ 
+  
+        margin: 0 auto ;
+        width: 100%;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 7px;
+        background-color: rgb(44, 146, 177);
+    }
+}
+

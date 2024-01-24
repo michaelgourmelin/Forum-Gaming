@@ -1,18 +1,71 @@
-{% extends "base_add_theme.html.twig" %}
+{% extends "base_add_comment.html.twig" %}
 {% block title %} Ajouter un commentaire {% endblock %}
 
 {% block body %}
 <main class="container">
     <section class="row">
         <div class="col-12">
-            <h1> Ajouter un commentaire :</h1>
+            <h1> Ajouter un commentaire</h1>
             <div class="form">
                 {{ form_start(form) }}
+
+                <!-- Affichage de la zone de commentaire -->
                 {{ form_row(form.commentaire)}}
-                <button  type="submit" class="btn btn-warning btn-lg text-white">Valider</button>        
-                {{ form_end(form) }}
+                <button type="button" class="btn btn-info" id="openSmileyList">🙂</button>
+
+                <!-- Bouton pour ouvrir la liste des smileys -->
+
+                <!-- Ajout des boutons smileys (cachés par défaut) -->
+                <div class="content">
+                    <div class="smiley-buttons" style="display: none;">
+                        <button type="button" class="smiley" data-smiley="😀">😀</button>
+                        <button type="button" class="smiley" data-smiley="😁">😁</button>
+                        <button type="button" class="smiley" data-smiley="😂">😂</button>
+                        <button type="button" class="smiley" data-smiley="🤣">🤣</button>
+                        <button type="button" class="smiley" data-smiley="😅">😅</button>
+                        <button type="button" class="smiley" data-smiley="😥">😥</button>
+                        <button type="button" class="smiley" data-smiley="😐">😐</button>
+                        <button type="button" class="smiley" data-smiley="😲">😲</button>
+                        <button type="button" class="smiley" data-smiley="☹️">☹️</button>
+                        <button type="button" class="smiley" data-smiley="🤠">🤠</button>
+                        <button type="button" class="smiley" data-smiley="🙂">🙂</button>
+                        <button type="button" class="smiley" data-smiley="😋">😋</button>
+                        <button type="button" class="smiley" data-smiley="🤩">🤩</button>
+                        <button type="button" class="smiley" data-smiley="😜">😜</button>
+                        <button type="button" class="smiley" data-smiley="😭">😭</button>
+                        <button type="button" class="smiley" data-smiley="💪">💪</button>
+                        <button type="button" class="smiley" data-smiley="🙏">🙏</button>
+                        <button type="button" class="smiley" data-smiley="❤️">❤️</button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-warning btn-lg text-white">Valider</button>
+                </div> {{ form_end(form) }}
             </div>
         </div>
     </section>
 </main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Afficher la liste des smileys lorsque le bouton est cliqué
+        $("#openSmileyList").click(function () {
+            $(".smiley-buttons").toggle();
+        });
+
+        // Fonction pour ajouter le smiley correspondant à l'image cliquée dans la zone de commentaire
+        $("button.smiley").click(function () {
+            var smiley = $(this).data("smiley");
+            var currentComment = $('.smiley-input').val();
+
+            // Ajouter le smiley sélectionné à la zone de commentaire
+            var updatedComment = currentComment + ' ' + smiley + ' ';
+
+            // Mise à jour de la zone de commentaire avec le nouveau contenu
+            $('.smiley-input').val(updatedComment).focus();
+        });
+    });
+</script>
+
 {% endblock %}

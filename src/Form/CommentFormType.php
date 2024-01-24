@@ -4,8 +4,8 @@ namespace App\Form;
 
 use App\Entity\Comment;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -26,13 +26,17 @@ class CommentFormType extends AbstractType
             ->add('commentaire', TextareaType::class, [
 
                 'empty_data' => '',
+                'label' => false,
 
                 'attr' => [
+                  
                     'id' => 'comment_form_commentaire', 
                     'rows' => 6,
                     'wrap' => 'soft',
                     'maxlength' => 500,
+                    'class' => 'smiley-input'
                 ],
+                
             ]);
  
     }
