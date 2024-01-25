@@ -43,6 +43,7 @@ smiley.addSmiley();
 
 
 //version jquery
+
 //$(document).ready(function () {
     // Afficher la liste des smileys lorsque le bouton est cliqué
    // $("#openSmileyList").click(function () {
