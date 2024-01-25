@@ -1,25 +1,18 @@
-/*VERSION FACTORISEE*/
-// const compare = (ids, asc) => (row1, row2) => {
-//     const tdValue = (row, ids) => row.children[ids].textContent;
-//     const tri = (v1, v2) => v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2);
-//     return tri(tdValue(asc ? row1 : row2, ids), tdValue(asc ? row2 : row1, ids));
-//   };
-  
-//   const tbody = document.querySelector('tbody');
-//   const thx = document.querySelectorAll('th');
-//   const trxb = tbody.querySelectorAll('tr');
-//   thx.forEach(th => th.addEventListener('click', () => {
-//     let classe = Array.from(trxb).sort(compare(Array.from(thx).indexOf(th), this.asc = !this.asc));
-//     classe.forEach(tr => tbody.appendChild(tr));
-//   }));
-// document.querySelector(".btn-danger").addEventListener("click",confimation)
+$(document).ready(function () {
+    // Afficher la liste des smileys lorsque le bouton est cliqué
+    $("#openSmileyList").click(function () {
+        $(".smiley-buttons").toggle();
+    });
 
-// function confimation(event){
-    
-//     event.preventDefault();
+    // Fonction pour ajouter le smiley correspondant à l'image cliquée dans la zone de commentaire
+    $("button.smiley").click(function () {
+        var smiley = $(this).data("smiley");
+        var currentComment = $('.smiley-input').val();
 
+        // Ajouter le smiley sélectionné à la zone de commentaire
+        var updatedComment = currentComment + ' ' + smiley + ' ';
 
-//     let message = "Êtes-vous sur de vouloir supprimer votre commentaire ?";
-//     console.log(event);
-
-// }
+        // Mise à jour de la zone de commentaire avec le nouveau contenu
+        $('.smiley-input').val(updatedComment).focus();
+    });
+});
